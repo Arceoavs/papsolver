@@ -1,5 +1,5 @@
 {
-  "python.pythonPath": "/Users/arnoarz/code/papsolvpy/.venv/bin/python3",
+  "python.pythonPath": "/Users/arnoarz/code/papsolvpy/server/.venv/bin/python3",
   "python.linting.enabled": true,
   "editor.tabSize": 4
 }
