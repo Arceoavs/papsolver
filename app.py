@@ -1,21 +1,36 @@
-from flask import Flask
+from flask import Flask, jsonify, url_for, redirect, request
+from services.solver import solveLinear
+import os
 
 app = Flask(__name__)
 
+API_NAMESPACE = os.environ.get("API_NAMESPACE")
+API_VERSION = os.environ.get("API_VERSION")
+namespace = f"/{API_NAMESPACE}/v{API_VERSION}"
 
+
+# redirect routes
 @app.route("/")
-def hello_world():
+def redirectEmpty():
+    return redirect(url_for("index"))
+
+
+@app.route(f"/{API_NAMESPACE}")
+def redirectNamespace():
+    return redirect(url_for("index"))
+
+
+@app.route(f"/v{API_VERSION}")
+def reedirectVersion():
+    return redirect(url_for("index"))
+
+
+@app.route(f"/{namespace}/")
+def index():
     return "Hello"
 
 
-@app.route("/user/<username>")
-def show_user_profile(username):
-    # show the user profile for that user
-    return "User %s" % username
-
-
-@app.route("/post/<int:post_id>")
-def show_post(post_id):
-    # show the post with the given id, the id is an integer
-    return "Post %d" % post_id
-
+@app.route(f"/{namespace}/solve", methods=["POST"])
+def solve():
+    req_data = request.get_json()
+    return solveLinear(req_data["tiers"], req_data["target"])
