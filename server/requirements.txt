@@ -10,9 +10,12 @@ Jinja2==2.11.1
 lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
+ortools==7.5.7466
 pathspec==0.7.0
 pathtools==0.1.2
+protobuf==3.11.3
 pylint==2.4.4
+python-dotenv==0.12.0
 regex==2020.2.20
 six==1.14.0
 toml==0.10.0
