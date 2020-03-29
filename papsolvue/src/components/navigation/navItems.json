@@ -1,0 +1,20 @@
+[
+  {
+    "tag": "iTunes",
+    "to": "itunes",
+    "icon": "mdi-music",
+    "loggedIn": true
+  },
+  {
+    "tag": "General",
+    "to": "general",
+    "icon": "mdi-currency-usd-off",
+    "loggedIn": true
+  },
+  {
+    "tag": "About",
+    "to": "about",
+    "icon": "mdi-information-variant",
+    "loggedIn": true
+  }
+]

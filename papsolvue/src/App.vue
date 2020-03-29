@@ -1,56 +1,44 @@
-<template>
-  <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-content>
-      <HelloWorld />
-    </v-content>
-  </v-app>
+<template lang="pug">
+v-app(:style="{background: $vuetify.theme.themes[theme].background}")
+  Navbar(@drawer="toggleDrawer")
+  Drawer.hidden-md-and-up(v-model="drawer")
+  v-content
+    router-view
+    
+  Footer
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import Navbar from "@/components/navigation/Navbar";
+import Drawer from "@/components/navigation/Drawer";
+import Footer from "@/components/navigation/Footer";
 
 export default {
   name: "App",
-
-  components: {
-    HelloWorld
+  components: { Navbar, Drawer, Footer },
+  data() {
+    return {
+      drawer: false
+    };
   },
+  computed: {
+    theme() {
+      return this.$vuetify.theme.dark ? "dark" : "light";
+    }
+  },
+  created() {
+    this.$http.interceptors.response.use(undefined, err => {
+      if (err.status === 401 && err.config && !err.config.__isRetryRequest)
+        this.$store.dispatch("logout");
 
-  data: () => ({
-    //
-  })
+      throw err;
+    });
+  },
+  mounted() {},
+  methods: {
+    toggleDrawer(val) {
+      this.drawer = val;
+    }
+  }
 };
 </script>
