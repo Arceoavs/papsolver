@@ -1,5 +1,6 @@
 {
   "python.pythonPath": "/Users/arnoarz/code/papsolvpy/server/.venv/bin/python3",
   "python.linting.enabled": true,
-  "editor.tabSize": 4
+  "editor.tabSize": 4,
+  "eslint.workingDirectories": ["./papsolvue"]
 }
