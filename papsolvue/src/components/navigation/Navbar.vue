@@ -1,5 +1,5 @@
 <template lang="pug">
-v-app-bar(app dense)
+v-app-bar(app dense color="dp1")
   v-row(justify="start" align="center" no-gutters)
     v-col.hidden-md-and-up(cols="8")
       v-app-bar-nav-icon(

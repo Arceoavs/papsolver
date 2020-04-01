@@ -10,23 +10,15 @@ export default new Vuetify({
       customProperties: true
     },
     themes: {
-      light: {
-        primary: "#ee44aa",
-        secondary: "#424242",
-        accent: "#82B1FF",
-        error: "#FF5252",
-        info: "#2196F3",
-        success: "#4CAF50",
-        warning: "#FFC107"
-      },
+      light: {},
       dark: {
-        primary: "#FFC107",
-        accent: "#82B1FF",
-        error: "#FF5252",
+        primary: "#ffd60a",
+        accent: "#64d2ff",
+        error: "#ff453a",
         info: "#2196F3",
-        success: "#4CAF50",
-        warning: "#FFC107",
-        background: "#121212",
+        success: "#8fd158",
+        warning: "#ff9f10",
+        background: "#1c1c1e",
         dp1: "#1D1D1D",
         dp2: "#222222",
         dp3: "#252525",
