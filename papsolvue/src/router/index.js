@@ -44,15 +44,6 @@ const routes = [
     }
   },
   {
-    path: "/terms",
-    name: "Terms",
-    component: () =>
-      import(/* webpackChunkName: "terms" */ "../views/legal/Terms.vue"),
-    meta: {
-      title: "Papsolver - Terms"
-    }
-  },
-  {
     path: "/iTunes",
     name: "iTunes",
     component: () =>

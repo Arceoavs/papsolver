@@ -26,12 +26,6 @@ v-footer(padless elevation="2")
         :to="{name: 'Privacy'}")
         | Privacy
 
-      v-btn(dark
-        text
-        small
-        :to="{name: 'Terms'}")
-        | Terms
-
       span.ml-1
         |&copy; {{new Date().getFullYear()}} - Arnold Arz
 </template>
