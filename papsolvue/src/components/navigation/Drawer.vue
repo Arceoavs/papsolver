@@ -6,8 +6,8 @@ v-navigation-drawer(app v-model="visible" temporary color="dp1")
         //- v-img(src="@/assets/logos/vgrlogo_white.svg"
           max-height="30px"
           contain)
-      v-list-item-subtitle.mt-3.text-center
-        | Video Game Recommender
+      v-list-item-subtitle.mt-3.text-center.title.white--text
+        | PapSolver
   v-divider
   v-list(dense, nav)
     v-list-item(v-for="item in items"

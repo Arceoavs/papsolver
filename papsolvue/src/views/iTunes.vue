@@ -1,6 +1,6 @@
 <template lang="pug">
-v-img(src="../assets/background.jpg"
-  gradient="0.5turn, rgba(0,0,0,1) 33%, rgba(0,0,0,0)"
+v-img(src="../assets/ios.jpg"
+  gradient="0.25turn, rgba(0,0,0,1) 15%, rgba(0,0,0,0)"
   height="100%")
 
   v-container
@@ -22,7 +22,7 @@ v-img(src="../assets/background.jpg"
                   label="Balance"
                   placeholder="0.00"
                   v-model="balance"
-                  :rules="[rules.required]")
+                  :rules="[rules.required, rules.decimal]")
             v-col(cols=12 md=10)
               v-autocomplete(outlined
                 prepend-inner-icon="mdi-earth"
@@ -54,7 +54,7 @@ v-img(src="../assets/background.jpg"
               v-btn(large
                 color="success"
                 type="submit"
-                :disabled="!valid")
+                :disabled="!valid || !selectedTiers.length")
                 | Solve!
 
       v-col#resultPane(sm=6 cols=12)
@@ -118,7 +118,9 @@ export default {
       }
     }
   },
-  async mounted() {},
+  async mounted() {
+    console.log();
+  },
   methods: {
     selectAllTiers() {
       this.$store.commit("updateSelectedTiers", this.tiers);

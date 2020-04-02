@@ -5,5 +5,9 @@ export default {
     const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return pattern.test(v) || "Invalid e-mail.";
   },
-  passwordMatch: (first, sec) => first === sec || "Passwords do not match"
+  passwordMatch: (first, sec) => first === sec || "Passwords do not match",
+  decimal: v => {
+    const pattern = /^\d+(\.\d{1,2})?$/;
+    return pattern.test(v) || "Invalid decimal";
+  }
 };
