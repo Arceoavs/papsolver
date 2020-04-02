@@ -60,7 +60,7 @@ v-img(src="../assets/ios.jpg"
       v-col#resultPane(sm=6 cols=12)
         v-row(justify="space-between" no-gutters)
           v-col
-            h2.display-1
+            h2.display-1.font-weight-bold
               | Required purchases
         v-row
           v-col
