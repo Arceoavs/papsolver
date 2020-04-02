@@ -24,33 +24,35 @@ v-img(src="../assets/background.jpg"
                   v-model="balance"
                   :rules="[rules.required]")
             v-col(cols=12 md=10)
-              v-select(outlined
+              v-autocomplete(outlined
                 prepend-inner-icon="mdi-earth"
                 label="Your country"
                 :items="countries"
                 item-text="name"
+                item-value="id"
                 v-model="country"
                 :rules="[rules.required]")
-            v-col(cols=10 md=10 align="start")
+            v-col(cols=12 md=10 align="start")
               v-select(outlined
                 prepend-inner-icon="mdi-tag-multiple"
                 multiple
-                chips
+                small-chips
                 :items="tiers"
                 item-text="price.full"
                 item-value="desc"
                 v-model="selectedTiers"
-                label="Pricing tiers (€)")            
+                label="Pricing tiers (€)"
+                :rules="[rules.required]")          
 
           v-row(justify="start" align="center")
-            v-col(cols=5 align="start")
+            v-col(cols=6 md=5 align="start")
               v-btn(large
                   color="info"
                   @click="selectAllTiers")
                   | All pricing tiers!
-            v-col(cols=5 align="end")
+            v-col(cols=6 md=5 align="end")
               v-btn(large
-                color="primary"
+                color="success"
                 type="submit"
                 :disabled="!valid")
                 | Solve!
@@ -62,9 +64,19 @@ v-img(src="../assets/background.jpg"
               | Required purchases
         v-row
           v-col
-            #noResultYet(v-if="!solution")
-            p.title.font-weight-light
-              | Please enter your balance first!
+            #noResultYet(v-if="!iTunesSolution")
+              p.title.font-weight-light
+                | Please enter your balance first!
+            #showResults(v-else)
+              p.title.font-weight-light 
+                | You have to buy:
+              v-chip.ma-1(v-for="solution in iTunesSolution"
+                color="primary"
+                outlined)
+                v-avatar.primary.darken-4(left)
+                  | {{solution.value}}
+                | {{solution.price.full}}€
+                
 </template>
 
 <script>
@@ -76,13 +88,11 @@ export default {
   data() {
     return {
       valid: false,
-      rules: regExpRules,
-
-      solution: null
+      rules: regExpRules
     };
   },
   computed: {
-    ...mapGetters(["countries", "tiers"]),
+    ...mapGetters(["countries", "tiers", "iTunesSolution"]),
     balance: {
       get() {
         return this.$store.getters.balance;
@@ -96,7 +106,7 @@ export default {
         return this.$store.getters.currentCountry;
       },
       set(value) {
-        this.$store.commit("updateCurrentCountry", value);
+        this.$store.dispatch("updateCurrentCountryById", value);
       }
     },
     selectedTiers: {
@@ -108,12 +118,13 @@ export default {
       }
     }
   },
+  async mounted() {},
   methods: {
     selectAllTiers() {
       this.$store.commit("updateSelectedTiers", this.tiers);
     },
     submit() {
-      this.$http.post("/solve", {});
+      this.$store.dispatch("solveItunes");
     }
   }
 };

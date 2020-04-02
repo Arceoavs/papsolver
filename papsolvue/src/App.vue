@@ -34,7 +34,11 @@ export default {
       throw err;
     });
   },
-  mounted() {},
+  mounted() {
+    // Check if the backend is reachable
+    const ping = this.$http.get("/");
+    if (ping) console.log("Backend connection established!");
+  },
   methods: {
     toggleDrawer(val) {
       this.drawer = val;
