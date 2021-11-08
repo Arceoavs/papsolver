@@ -1,3 +1,5 @@
+# NOT USING CHALICE ANYMORE
+
 # PapsolvPi
 
 Python backend for the Papa-Problem-Solver.
