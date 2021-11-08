@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: solver
+  namespace: papsolvue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: solver
+  template:
+    metadata:
+      labels:
+        app: solver
+    spec:
+      containers:
+        - name: solver
+          image: arceo99/solver:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      nodeSelector:
+        kubernetes.io/arch: amd64

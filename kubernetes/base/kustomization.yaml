@@ -1,0 +1,11 @@
+# Kustomization file for kubernetes base
+# includes: namespace, solver-deployment, solver-service, solver-ingress
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - namespace.yaml
+  - solver-deployment.yaml
+  - solver-service.yaml
+  - solver-ingress.yaml

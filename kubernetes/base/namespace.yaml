@@ -1,0 +1,8 @@
+# Kubernetes namespace "papsolvue"
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: papsolvue
+  labels:
+    app: papsolvue
