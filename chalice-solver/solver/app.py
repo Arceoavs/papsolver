@@ -1,28 +1,12 @@
-from chalice import (
-    Chalice,
-    Response,
-    CORSConfig,
-    AuthResponse,
-    AuthRoute,
-)
-from chalice import NotFoundError, BadRequestError
-
-# from operationsresearch.prepaid import PrepaidSolver
+from flask import Flask
 from ortools.linear_solver import pywraplp
 import os
+from flask_cors import CORS
 
-app = Chalice(app_name="solver")
+app = Flask(__name__)
 
 # Configure CORS Routes
-# cors_allow_origin = os.getenv("CORS_ALLOW_ORIGIN", "*")
-cors_allow_origin = "*"
-cors_config = CORSConfig(allow_origin=cors_allow_origin)
-
-# Configure debug output
-environment = os.getenv("CHALICE_ENVIRONMENT", "development")
-if environment == "development":
-    app.debug = True
-
+CORS(app)
 
 class PrepaidSolver:
     def __init__(self, tiers: dict, target: float):
@@ -64,7 +48,7 @@ class PrepaidSolver:
         return self.formatSolution()
 
 
-@app.route("/", methods=["GET"], api_key_required=True, cors=cors_config)
+@app.route("/", methods=["GET"])
 def status():
     title = "PapSolver"
     version = "v1.0"
@@ -72,7 +56,7 @@ def status():
     return {"title": title, "version": version, "description": description}
 
 
-@app.route("/solve", methods=["POST"], api_key_required=True, cors=True)
+@app.route("/solve", methods=["POST"])
 def solve():
     tiers = app.current_request.json_body["tiers"]
     target = app.current_request.json_body["target"]
@@ -82,3 +66,6 @@ def solve():
         raise BadRequestError("Please provide a non-empty problem!")
 
     return PREPAID_SOLVER.solveLinear()
+
+if __name__ == '__main__':
+    app.run()
