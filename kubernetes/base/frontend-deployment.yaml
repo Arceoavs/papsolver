@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: papsolvue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: arceo99/papsolvue:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: VUE_API_URL
+              value: http://papsolvue-api-deployment.papsolvue.svc.cluster.local
