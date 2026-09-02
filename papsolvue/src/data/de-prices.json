@@ -1,0 +1,3224 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "country": "Germany",
+    "countryCode": "DE",
+    "appStoreConnectTerritory": "DEU",
+    "currency": "EUR",
+    "taxInclusive": true,
+    "asOf": "2026-05-13",
+    "retrievedAt": "2026-09-02",
+    "sourceName": "Galva Apple App Store pricing — Germany",
+    "sourceUrl": "https://galva.io/tools/apple-pricing-tiers/region/de",
+    "sourceAuthority": "Third-party snapshot (Galva), described by its publisher as derived from Apple App Store Connect",
+    "sourceClaim": "Galva states that the values were pulled directly from Apple's App Store Connect pricing matrix and verified on 2026-05-13.",
+    "sourceContentSha256": "d93f2a0ddfafe15f8595d01eef123d289acead33ddc52fc52e3372f2197d559a",
+    "canonicalSource": "Apple App Store Connect API",
+    "canonicalSourceUrl": "https://developer.apple.com/documentation/appstoreconnectapi",
+    "caveat": "This is a third-party snapshot, not a live Apple response. Canonical current values require authenticated App Store Connect access and an app, subscription, or in-app purchase identifier.",
+    "recordCount": 800,
+    "generatedBy": "scripts/import_apple_prices.py"
+  },
+  "prices": [
+    {
+      "id": "deu-0000",
+      "priceCents": 29
+    },
+    {
+      "id": "deu-0001",
+      "priceCents": 39
+    },
+    {
+      "id": "deu-0002",
+      "priceCents": 49
+    },
+    {
+      "id": "deu-0003",
+      "priceCents": 59
+    },
+    {
+      "id": "deu-0004",
+      "priceCents": 69
+    },
+    {
+      "id": "deu-0005",
+      "priceCents": 79
+    },
+    {
+      "id": "deu-0006",
+      "priceCents": 89
+    },
+    {
+      "id": "deu-0007",
+      "priceCents": 90
+    },
+    {
+      "id": "deu-0008",
+      "priceCents": 95
+    },
+    {
+      "id": "deu-0009",
+      "priceCents": 99
+    },
+    {
+      "id": "deu-0010",
+      "priceCents": 100
+    },
+    {
+      "id": "deu-0011",
+      "priceCents": 109
+    },
+    {
+      "id": "deu-0012",
+      "priceCents": 119
+    },
+    {
+      "id": "deu-0013",
+      "priceCents": 129
+    },
+    {
+      "id": "deu-0014",
+      "priceCents": 139
+    },
+    {
+      "id": "deu-0015",
+      "priceCents": 149
+    },
+    {
+      "id": "deu-0016",
+      "priceCents": 159
+    },
+    {
+      "id": "deu-0017",
+      "priceCents": 169
+    },
+    {
+      "id": "deu-0018",
+      "priceCents": 179
+    },
+    {
+      "id": "deu-0019",
+      "priceCents": 189
+    },
+    {
+      "id": "deu-0020",
+      "priceCents": 190
+    },
+    {
+      "id": "deu-0021",
+      "priceCents": 195
+    },
+    {
+      "id": "deu-0022",
+      "priceCents": 199
+    },
+    {
+      "id": "deu-0023",
+      "priceCents": 200
+    },
+    {
+      "id": "deu-0024",
+      "priceCents": 209
+    },
+    {
+      "id": "deu-0025",
+      "priceCents": 219
+    },
+    {
+      "id": "deu-0026",
+      "priceCents": 229
+    },
+    {
+      "id": "deu-0027",
+      "priceCents": 239
+    },
+    {
+      "id": "deu-0028",
+      "priceCents": 249
+    },
+    {
+      "id": "deu-0029",
+      "priceCents": 259
+    },
+    {
+      "id": "deu-0030",
+      "priceCents": 269
+    },
+    {
+      "id": "deu-0031",
+      "priceCents": 279
+    },
+    {
+      "id": "deu-0032",
+      "priceCents": 289
+    },
+    {
+      "id": "deu-0033",
+      "priceCents": 290
+    },
+    {
+      "id": "deu-0034",
+      "priceCents": 295
+    },
+    {
+      "id": "deu-0035",
+      "priceCents": 299
+    },
+    {
+      "id": "deu-0036",
+      "priceCents": 300
+    },
+    {
+      "id": "deu-0037",
+      "priceCents": 309
+    },
+    {
+      "id": "deu-0038",
+      "priceCents": 319
+    },
+    {
+      "id": "deu-0039",
+      "priceCents": 329
+    },
+    {
+      "id": "deu-0040",
+      "priceCents": 339
+    },
+    {
+      "id": "deu-0041",
+      "priceCents": 349
+    },
+    {
+      "id": "deu-0042",
+      "priceCents": 359
+    },
+    {
+      "id": "deu-0043",
+      "priceCents": 369
+    },
+    {
+      "id": "deu-0044",
+      "priceCents": 379
+    },
+    {
+      "id": "deu-0045",
+      "priceCents": 389
+    },
+    {
+      "id": "deu-0046",
+      "priceCents": 390
+    },
+    {
+      "id": "deu-0047",
+      "priceCents": 395
+    },
+    {
+      "id": "deu-0048",
+      "priceCents": 399
+    },
+    {
+      "id": "deu-0049",
+      "priceCents": 400
+    },
+    {
+      "id": "deu-0050",
+      "priceCents": 409
+    },
+    {
+      "id": "deu-0051",
+      "priceCents": 419
+    },
+    {
+      "id": "deu-0052",
+      "priceCents": 429
+    },
+    {
+      "id": "deu-0053",
+      "priceCents": 439
+    },
+    {
+      "id": "deu-0054",
+      "priceCents": 449
+    },
+    {
+      "id": "deu-0055",
+      "priceCents": 459
+    },
+    {
+      "id": "deu-0056",
+      "priceCents": 469
+    },
+    {
+      "id": "deu-0057",
+      "priceCents": 479
+    },
+    {
+      "id": "deu-0058",
+      "priceCents": 489
+    },
+    {
+      "id": "deu-0059",
+      "priceCents": 490
+    },
+    {
+      "id": "deu-0060",
+      "priceCents": 495
+    },
+    {
+      "id": "deu-0061",
+      "priceCents": 499
+    },
+    {
+      "id": "deu-0062",
+      "priceCents": 500
+    },
+    {
+      "id": "deu-0063",
+      "priceCents": 509
+    },
+    {
+      "id": "deu-0064",
+      "priceCents": 519
+    },
+    {
+      "id": "deu-0065",
+      "priceCents": 529
+    },
+    {
+      "id": "deu-0066",
+      "priceCents": 539
+    },
+    {
+      "id": "deu-0067",
+      "priceCents": 549
+    },
+    {
+      "id": "deu-0068",
+      "priceCents": 559
+    },
+    {
+      "id": "deu-0069",
+      "priceCents": 569
+    },
+    {
+      "id": "deu-0070",
+      "priceCents": 579
+    },
+    {
+      "id": "deu-0071",
+      "priceCents": 589
+    },
+    {
+      "id": "deu-0072",
+      "priceCents": 590
+    },
+    {
+      "id": "deu-0073",
+      "priceCents": 595
+    },
+    {
+      "id": "deu-0074",
+      "priceCents": 599
+    },
+    {
+      "id": "deu-0075",
+      "priceCents": 600
+    },
+    {
+      "id": "deu-0076",
+      "priceCents": 609
+    },
+    {
+      "id": "deu-0077",
+      "priceCents": 619
+    },
+    {
+      "id": "deu-0078",
+      "priceCents": 629
+    },
+    {
+      "id": "deu-0079",
+      "priceCents": 639
+    },
+    {
+      "id": "deu-0080",
+      "priceCents": 649
+    },
+    {
+      "id": "deu-0081",
+      "priceCents": 659
+    },
+    {
+      "id": "deu-0082",
+      "priceCents": 669
+    },
+    {
+      "id": "deu-0083",
+      "priceCents": 679
+    },
+    {
+      "id": "deu-0084",
+      "priceCents": 689
+    },
+    {
+      "id": "deu-0085",
+      "priceCents": 690
+    },
+    {
+      "id": "deu-0086",
+      "priceCents": 695
+    },
+    {
+      "id": "deu-0087",
+      "priceCents": 699
+    },
+    {
+      "id": "deu-0088",
+      "priceCents": 700
+    },
+    {
+      "id": "deu-0089",
+      "priceCents": 709
+    },
+    {
+      "id": "deu-0090",
+      "priceCents": 719
+    },
+    {
+      "id": "deu-0091",
+      "priceCents": 729
+    },
+    {
+      "id": "deu-0092",
+      "priceCents": 739
+    },
+    {
+      "id": "deu-0093",
+      "priceCents": 749
+    },
+    {
+      "id": "deu-0094",
+      "priceCents": 759
+    },
+    {
+      "id": "deu-0095",
+      "priceCents": 769
+    },
+    {
+      "id": "deu-0096",
+      "priceCents": 779
+    },
+    {
+      "id": "deu-0097",
+      "priceCents": 789
+    },
+    {
+      "id": "deu-0098",
+      "priceCents": 790
+    },
+    {
+      "id": "deu-0099",
+      "priceCents": 795
+    },
+    {
+      "id": "deu-0100",
+      "priceCents": 799
+    },
+    {
+      "id": "deu-0101",
+      "priceCents": 800
+    },
+    {
+      "id": "deu-0102",
+      "priceCents": 809
+    },
+    {
+      "id": "deu-0103",
+      "priceCents": 819
+    },
+    {
+      "id": "deu-0104",
+      "priceCents": 829
+    },
+    {
+      "id": "deu-0105",
+      "priceCents": 839
+    },
+    {
+      "id": "deu-0106",
+      "priceCents": 849
+    },
+    {
+      "id": "deu-0107",
+      "priceCents": 859
+    },
+    {
+      "id": "deu-0108",
+      "priceCents": 869
+    },
+    {
+      "id": "deu-0109",
+      "priceCents": 879
+    },
+    {
+      "id": "deu-0110",
+      "priceCents": 889
+    },
+    {
+      "id": "deu-0111",
+      "priceCents": 890
+    },
+    {
+      "id": "deu-0112",
+      "priceCents": 895
+    },
+    {
+      "id": "deu-0113",
+      "priceCents": 899
+    },
+    {
+      "id": "deu-0114",
+      "priceCents": 900
+    },
+    {
+      "id": "deu-0115",
+      "priceCents": 909
+    },
+    {
+      "id": "deu-0116",
+      "priceCents": 919
+    },
+    {
+      "id": "deu-0117",
+      "priceCents": 929
+    },
+    {
+      "id": "deu-0118",
+      "priceCents": 939
+    },
+    {
+      "id": "deu-0119",
+      "priceCents": 949
+    },
+    {
+      "id": "deu-0120",
+      "priceCents": 959
+    },
+    {
+      "id": "deu-0121",
+      "priceCents": 969
+    },
+    {
+      "id": "deu-0122",
+      "priceCents": 979
+    },
+    {
+      "id": "deu-0123",
+      "priceCents": 989
+    },
+    {
+      "id": "deu-0124",
+      "priceCents": 990
+    },
+    {
+      "id": "deu-0125",
+      "priceCents": 995
+    },
+    {
+      "id": "deu-0126",
+      "priceCents": 999
+    },
+    {
+      "id": "deu-0127",
+      "priceCents": 1000
+    },
+    {
+      "id": "deu-0128",
+      "priceCents": 1049
+    },
+    {
+      "id": "deu-0129",
+      "priceCents": 1090
+    },
+    {
+      "id": "deu-0130",
+      "priceCents": 1095
+    },
+    {
+      "id": "deu-0131",
+      "priceCents": 1099
+    },
+    {
+      "id": "deu-0132",
+      "priceCents": 1100
+    },
+    {
+      "id": "deu-0133",
+      "priceCents": 1149
+    },
+    {
+      "id": "deu-0134",
+      "priceCents": 1190
+    },
+    {
+      "id": "deu-0135",
+      "priceCents": 1195
+    },
+    {
+      "id": "deu-0136",
+      "priceCents": 1199
+    },
+    {
+      "id": "deu-0137",
+      "priceCents": 1200
+    },
+    {
+      "id": "deu-0138",
+      "priceCents": 1249
+    },
+    {
+      "id": "deu-0139",
+      "priceCents": 1290
+    },
+    {
+      "id": "deu-0140",
+      "priceCents": 1295
+    },
+    {
+      "id": "deu-0141",
+      "priceCents": 1299
+    },
+    {
+      "id": "deu-0142",
+      "priceCents": 1300
+    },
+    {
+      "id": "deu-0143",
+      "priceCents": 1349
+    },
+    {
+      "id": "deu-0144",
+      "priceCents": 1390
+    },
+    {
+      "id": "deu-0145",
+      "priceCents": 1395
+    },
+    {
+      "id": "deu-0146",
+      "priceCents": 1399
+    },
+    {
+      "id": "deu-0147",
+      "priceCents": 1400
+    },
+    {
+      "id": "deu-0148",
+      "priceCents": 1449
+    },
+    {
+      "id": "deu-0149",
+      "priceCents": 1490
+    },
+    {
+      "id": "deu-0150",
+      "priceCents": 1495
+    },
+    {
+      "id": "deu-0151",
+      "priceCents": 1499
+    },
+    {
+      "id": "deu-0152",
+      "priceCents": 1500
+    },
+    {
+      "id": "deu-0153",
+      "priceCents": 1549
+    },
+    {
+      "id": "deu-0154",
+      "priceCents": 1590
+    },
+    {
+      "id": "deu-0155",
+      "priceCents": 1595
+    },
+    {
+      "id": "deu-0156",
+      "priceCents": 1599
+    },
+    {
+      "id": "deu-0157",
+      "priceCents": 1600
+    },
+    {
+      "id": "deu-0158",
+      "priceCents": 1649
+    },
+    {
+      "id": "deu-0159",
+      "priceCents": 1690
+    },
+    {
+      "id": "deu-0160",
+      "priceCents": 1695
+    },
+    {
+      "id": "deu-0161",
+      "priceCents": 1699
+    },
+    {
+      "id": "deu-0162",
+      "priceCents": 1700
+    },
+    {
+      "id": "deu-0163",
+      "priceCents": 1749
+    },
+    {
+      "id": "deu-0164",
+      "priceCents": 1790
+    },
+    {
+      "id": "deu-0165",
+      "priceCents": 1795
+    },
+    {
+      "id": "deu-0166",
+      "priceCents": 1799
+    },
+    {
+      "id": "deu-0167",
+      "priceCents": 1800
+    },
+    {
+      "id": "deu-0168",
+      "priceCents": 1849
+    },
+    {
+      "id": "deu-0169",
+      "priceCents": 1890
+    },
+    {
+      "id": "deu-0170",
+      "priceCents": 1895
+    },
+    {
+      "id": "deu-0171",
+      "priceCents": 1899
+    },
+    {
+      "id": "deu-0172",
+      "priceCents": 1900
+    },
+    {
+      "id": "deu-0173",
+      "priceCents": 1949
+    },
+    {
+      "id": "deu-0174",
+      "priceCents": 1990
+    },
+    {
+      "id": "deu-0175",
+      "priceCents": 1995
+    },
+    {
+      "id": "deu-0176",
+      "priceCents": 1999
+    },
+    {
+      "id": "deu-0177",
+      "priceCents": 2000
+    },
+    {
+      "id": "deu-0178",
+      "priceCents": 2049
+    },
+    {
+      "id": "deu-0179",
+      "priceCents": 2090
+    },
+    {
+      "id": "deu-0180",
+      "priceCents": 2095
+    },
+    {
+      "id": "deu-0181",
+      "priceCents": 2099
+    },
+    {
+      "id": "deu-0182",
+      "priceCents": 2100
+    },
+    {
+      "id": "deu-0183",
+      "priceCents": 2149
+    },
+    {
+      "id": "deu-0184",
+      "priceCents": 2190
+    },
+    {
+      "id": "deu-0185",
+      "priceCents": 2195
+    },
+    {
+      "id": "deu-0186",
+      "priceCents": 2199
+    },
+    {
+      "id": "deu-0187",
+      "priceCents": 2200
+    },
+    {
+      "id": "deu-0188",
+      "priceCents": 2249
+    },
+    {
+      "id": "deu-0189",
+      "priceCents": 2290
+    },
+    {
+      "id": "deu-0190",
+      "priceCents": 2295
+    },
+    {
+      "id": "deu-0191",
+      "priceCents": 2299
+    },
+    {
+      "id": "deu-0192",
+      "priceCents": 2300
+    },
+    {
+      "id": "deu-0193",
+      "priceCents": 2349
+    },
+    {
+      "id": "deu-0194",
+      "priceCents": 2390
+    },
+    {
+      "id": "deu-0195",
+      "priceCents": 2395
+    },
+    {
+      "id": "deu-0196",
+      "priceCents": 2399
+    },
+    {
+      "id": "deu-0197",
+      "priceCents": 2400
+    },
+    {
+      "id": "deu-0198",
+      "priceCents": 2449
+    },
+    {
+      "id": "deu-0199",
+      "priceCents": 2490
+    },
+    {
+      "id": "deu-0200",
+      "priceCents": 2495
+    },
+    {
+      "id": "deu-0201",
+      "priceCents": 2499
+    },
+    {
+      "id": "deu-0202",
+      "priceCents": 2500
+    },
+    {
+      "id": "deu-0203",
+      "priceCents": 2549
+    },
+    {
+      "id": "deu-0204",
+      "priceCents": 2590
+    },
+    {
+      "id": "deu-0205",
+      "priceCents": 2595
+    },
+    {
+      "id": "deu-0206",
+      "priceCents": 2599
+    },
+    {
+      "id": "deu-0207",
+      "priceCents": 2600
+    },
+    {
+      "id": "deu-0208",
+      "priceCents": 2649
+    },
+    {
+      "id": "deu-0209",
+      "priceCents": 2690
+    },
+    {
+      "id": "deu-0210",
+      "priceCents": 2695
+    },
+    {
+      "id": "deu-0211",
+      "priceCents": 2699
+    },
+    {
+      "id": "deu-0212",
+      "priceCents": 2700
+    },
+    {
+      "id": "deu-0213",
+      "priceCents": 2749
+    },
+    {
+      "id": "deu-0214",
+      "priceCents": 2790
+    },
+    {
+      "id": "deu-0215",
+      "priceCents": 2795
+    },
+    {
+      "id": "deu-0216",
+      "priceCents": 2799
+    },
+    {
+      "id": "deu-0217",
+      "priceCents": 2800
+    },
+    {
+      "id": "deu-0218",
+      "priceCents": 2849
+    },
+    {
+      "id": "deu-0219",
+      "priceCents": 2890
+    },
+    {
+      "id": "deu-0220",
+      "priceCents": 2895
+    },
+    {
+      "id": "deu-0221",
+      "priceCents": 2899
+    },
+    {
+      "id": "deu-0222",
+      "priceCents": 2900
+    },
+    {
+      "id": "deu-0223",
+      "priceCents": 2949
+    },
+    {
+      "id": "deu-0224",
+      "priceCents": 2990
+    },
+    {
+      "id": "deu-0225",
+      "priceCents": 2995
+    },
+    {
+      "id": "deu-0226",
+      "priceCents": 2999
+    },
+    {
+      "id": "deu-0227",
+      "priceCents": 3000
+    },
+    {
+      "id": "deu-0228",
+      "priceCents": 3049
+    },
+    {
+      "id": "deu-0229",
+      "priceCents": 3090
+    },
+    {
+      "id": "deu-0230",
+      "priceCents": 3095
+    },
+    {
+      "id": "deu-0231",
+      "priceCents": 3099
+    },
+    {
+      "id": "deu-0232",
+      "priceCents": 3100
+    },
+    {
+      "id": "deu-0233",
+      "priceCents": 3149
+    },
+    {
+      "id": "deu-0234",
+      "priceCents": 3190
+    },
+    {
+      "id": "deu-0235",
+      "priceCents": 3195
+    },
+    {
+      "id": "deu-0236",
+      "priceCents": 3199
+    },
+    {
+      "id": "deu-0237",
+      "priceCents": 3200
+    },
+    {
+      "id": "deu-0238",
+      "priceCents": 3249
+    },
+    {
+      "id": "deu-0239",
+      "priceCents": 3290
+    },
+    {
+      "id": "deu-0240",
+      "priceCents": 3295
+    },
+    {
+      "id": "deu-0241",
+      "priceCents": 3299
+    },
+    {
+      "id": "deu-0242",
+      "priceCents": 3300
+    },
+    {
+      "id": "deu-0243",
+      "priceCents": 3349
+    },
+    {
+      "id": "deu-0244",
+      "priceCents": 3390
+    },
+    {
+      "id": "deu-0245",
+      "priceCents": 3395
+    },
+    {
+      "id": "deu-0246",
+      "priceCents": 3399
+    },
+    {
+      "id": "deu-0247",
+      "priceCents": 3400
+    },
+    {
+      "id": "deu-0248",
+      "priceCents": 3449
+    },
+    {
+      "id": "deu-0249",
+      "priceCents": 3490
+    },
+    {
+      "id": "deu-0250",
+      "priceCents": 3495
+    },
+    {
+      "id": "deu-0251",
+      "priceCents": 3499
+    },
+    {
+      "id": "deu-0252",
+      "priceCents": 3500
+    },
+    {
+      "id": "deu-0253",
+      "priceCents": 3549
+    },
+    {
+      "id": "deu-0254",
+      "priceCents": 3590
+    },
+    {
+      "id": "deu-0255",
+      "priceCents": 3595
+    },
+    {
+      "id": "deu-0256",
+      "priceCents": 3599
+    },
+    {
+      "id": "deu-0257",
+      "priceCents": 3600
+    },
+    {
+      "id": "deu-0258",
+      "priceCents": 3649
+    },
+    {
+      "id": "deu-0259",
+      "priceCents": 3690
+    },
+    {
+      "id": "deu-0260",
+      "priceCents": 3695
+    },
+    {
+      "id": "deu-0261",
+      "priceCents": 3699
+    },
+    {
+      "id": "deu-0262",
+      "priceCents": 3700
+    },
+    {
+      "id": "deu-0263",
+      "priceCents": 3749
+    },
+    {
+      "id": "deu-0264",
+      "priceCents": 3790
+    },
+    {
+      "id": "deu-0265",
+      "priceCents": 3795
+    },
+    {
+      "id": "deu-0266",
+      "priceCents": 3799
+    },
+    {
+      "id": "deu-0267",
+      "priceCents": 3800
+    },
+    {
+      "id": "deu-0268",
+      "priceCents": 3849
+    },
+    {
+      "id": "deu-0269",
+      "priceCents": 3890
+    },
+    {
+      "id": "deu-0270",
+      "priceCents": 3895
+    },
+    {
+      "id": "deu-0271",
+      "priceCents": 3899
+    },
+    {
+      "id": "deu-0272",
+      "priceCents": 3900
+    },
+    {
+      "id": "deu-0273",
+      "priceCents": 3949
+    },
+    {
+      "id": "deu-0274",
+      "priceCents": 3990
+    },
+    {
+      "id": "deu-0275",
+      "priceCents": 3995
+    },
+    {
+      "id": "deu-0276",
+      "priceCents": 3999
+    },
+    {
+      "id": "deu-0277",
+      "priceCents": 4000
+    },
+    {
+      "id": "deu-0278",
+      "priceCents": 4049
+    },
+    {
+      "id": "deu-0279",
+      "priceCents": 4090
+    },
+    {
+      "id": "deu-0280",
+      "priceCents": 4095
+    },
+    {
+      "id": "deu-0281",
+      "priceCents": 4099
+    },
+    {
+      "id": "deu-0282",
+      "priceCents": 4100
+    },
+    {
+      "id": "deu-0283",
+      "priceCents": 4149
+    },
+    {
+      "id": "deu-0284",
+      "priceCents": 4190
+    },
+    {
+      "id": "deu-0285",
+      "priceCents": 4195
+    },
+    {
+      "id": "deu-0286",
+      "priceCents": 4199
+    },
+    {
+      "id": "deu-0287",
+      "priceCents": 4200
+    },
+    {
+      "id": "deu-0288",
+      "priceCents": 4249
+    },
+    {
+      "id": "deu-0289",
+      "priceCents": 4290
+    },
+    {
+      "id": "deu-0290",
+      "priceCents": 4295
+    },
+    {
+      "id": "deu-0291",
+      "priceCents": 4299
+    },
+    {
+      "id": "deu-0292",
+      "priceCents": 4300
+    },
+    {
+      "id": "deu-0293",
+      "priceCents": 4349
+    },
+    {
+      "id": "deu-0294",
+      "priceCents": 4390
+    },
+    {
+      "id": "deu-0295",
+      "priceCents": 4395
+    },
+    {
+      "id": "deu-0296",
+      "priceCents": 4399
+    },
+    {
+      "id": "deu-0297",
+      "priceCents": 4400
+    },
+    {
+      "id": "deu-0298",
+      "priceCents": 4449
+    },
+    {
+      "id": "deu-0299",
+      "priceCents": 4490
+    },
+    {
+      "id": "deu-0300",
+      "priceCents": 4495
+    },
+    {
+      "id": "deu-0301",
+      "priceCents": 4499
+    },
+    {
+      "id": "deu-0302",
+      "priceCents": 4500
+    },
+    {
+      "id": "deu-0303",
+      "priceCents": 4549
+    },
+    {
+      "id": "deu-0304",
+      "priceCents": 4590
+    },
+    {
+      "id": "deu-0305",
+      "priceCents": 4595
+    },
+    {
+      "id": "deu-0306",
+      "priceCents": 4599
+    },
+    {
+      "id": "deu-0307",
+      "priceCents": 4600
+    },
+    {
+      "id": "deu-0308",
+      "priceCents": 4649
+    },
+    {
+      "id": "deu-0309",
+      "priceCents": 4690
+    },
+    {
+      "id": "deu-0310",
+      "priceCents": 4695
+    },
+    {
+      "id": "deu-0311",
+      "priceCents": 4699
+    },
+    {
+      "id": "deu-0312",
+      "priceCents": 4700
+    },
+    {
+      "id": "deu-0313",
+      "priceCents": 4749
+    },
+    {
+      "id": "deu-0314",
+      "priceCents": 4790
+    },
+    {
+      "id": "deu-0315",
+      "priceCents": 4795
+    },
+    {
+      "id": "deu-0316",
+      "priceCents": 4799
+    },
+    {
+      "id": "deu-0317",
+      "priceCents": 4800
+    },
+    {
+      "id": "deu-0318",
+      "priceCents": 4849
+    },
+    {
+      "id": "deu-0319",
+      "priceCents": 4890
+    },
+    {
+      "id": "deu-0320",
+      "priceCents": 4895
+    },
+    {
+      "id": "deu-0321",
+      "priceCents": 4899
+    },
+    {
+      "id": "deu-0322",
+      "priceCents": 4900
+    },
+    {
+      "id": "deu-0323",
+      "priceCents": 4949
+    },
+    {
+      "id": "deu-0324",
+      "priceCents": 4990
+    },
+    {
+      "id": "deu-0325",
+      "priceCents": 4995
+    },
+    {
+      "id": "deu-0326",
+      "priceCents": 4999
+    },
+    {
+      "id": "deu-0327",
+      "priceCents": 5000
+    },
+    {
+      "id": "deu-0328",
+      "priceCents": 5090
+    },
+    {
+      "id": "deu-0329",
+      "priceCents": 5099
+    },
+    {
+      "id": "deu-0330",
+      "priceCents": 5100
+    },
+    {
+      "id": "deu-0331",
+      "priceCents": 5190
+    },
+    {
+      "id": "deu-0332",
+      "priceCents": 5199
+    },
+    {
+      "id": "deu-0333",
+      "priceCents": 5200
+    },
+    {
+      "id": "deu-0334",
+      "priceCents": 5290
+    },
+    {
+      "id": "deu-0335",
+      "priceCents": 5299
+    },
+    {
+      "id": "deu-0336",
+      "priceCents": 5300
+    },
+    {
+      "id": "deu-0337",
+      "priceCents": 5390
+    },
+    {
+      "id": "deu-0338",
+      "priceCents": 5399
+    },
+    {
+      "id": "deu-0339",
+      "priceCents": 5400
+    },
+    {
+      "id": "deu-0340",
+      "priceCents": 5490
+    },
+    {
+      "id": "deu-0341",
+      "priceCents": 5499
+    },
+    {
+      "id": "deu-0342",
+      "priceCents": 5500
+    },
+    {
+      "id": "deu-0343",
+      "priceCents": 5590
+    },
+    {
+      "id": "deu-0344",
+      "priceCents": 5599
+    },
+    {
+      "id": "deu-0345",
+      "priceCents": 5600
+    },
+    {
+      "id": "deu-0346",
+      "priceCents": 5690
+    },
+    {
+      "id": "deu-0347",
+      "priceCents": 5699
+    },
+    {
+      "id": "deu-0348",
+      "priceCents": 5700
+    },
+    {
+      "id": "deu-0349",
+      "priceCents": 5790
+    },
+    {
+      "id": "deu-0350",
+      "priceCents": 5799
+    },
+    {
+      "id": "deu-0351",
+      "priceCents": 5800
+    },
+    {
+      "id": "deu-0352",
+      "priceCents": 5890
+    },
+    {
+      "id": "deu-0353",
+      "priceCents": 5899
+    },
+    {
+      "id": "deu-0354",
+      "priceCents": 5900
+    },
+    {
+      "id": "deu-0355",
+      "priceCents": 5990
+    },
+    {
+      "id": "deu-0356",
+      "priceCents": 5999
+    },
+    {
+      "id": "deu-0357",
+      "priceCents": 6000
+    },
+    {
+      "id": "deu-0358",
+      "priceCents": 6090
+    },
+    {
+      "id": "deu-0359",
+      "priceCents": 6099
+    },
+    {
+      "id": "deu-0360",
+      "priceCents": 6100
+    },
+    {
+      "id": "deu-0361",
+      "priceCents": 6190
+    },
+    {
+      "id": "deu-0362",
+      "priceCents": 6199
+    },
+    {
+      "id": "deu-0363",
+      "priceCents": 6200
+    },
+    {
+      "id": "deu-0364",
+      "priceCents": 6290
+    },
+    {
+      "id": "deu-0365",
+      "priceCents": 6299
+    },
+    {
+      "id": "deu-0366",
+      "priceCents": 6300
+    },
+    {
+      "id": "deu-0367",
+      "priceCents": 6390
+    },
+    {
+      "id": "deu-0368",
+      "priceCents": 6399
+    },
+    {
+      "id": "deu-0369",
+      "priceCents": 6400
+    },
+    {
+      "id": "deu-0370",
+      "priceCents": 6490
+    },
+    {
+      "id": "deu-0371",
+      "priceCents": 6499
+    },
+    {
+      "id": "deu-0372",
+      "priceCents": 6500
+    },
+    {
+      "id": "deu-0373",
+      "priceCents": 6590
+    },
+    {
+      "id": "deu-0374",
+      "priceCents": 6599
+    },
+    {
+      "id": "deu-0375",
+      "priceCents": 6600
+    },
+    {
+      "id": "deu-0376",
+      "priceCents": 6690
+    },
+    {
+      "id": "deu-0377",
+      "priceCents": 6699
+    },
+    {
+      "id": "deu-0378",
+      "priceCents": 6700
+    },
+    {
+      "id": "deu-0379",
+      "priceCents": 6790
+    },
+    {
+      "id": "deu-0380",
+      "priceCents": 6799
+    },
+    {
+      "id": "deu-0381",
+      "priceCents": 6800
+    },
+    {
+      "id": "deu-0382",
+      "priceCents": 6890
+    },
+    {
+      "id": "deu-0383",
+      "priceCents": 6899
+    },
+    {
+      "id": "deu-0384",
+      "priceCents": 6900
+    },
+    {
+      "id": "deu-0385",
+      "priceCents": 6990
+    },
+    {
+      "id": "deu-0386",
+      "priceCents": 6999
+    },
+    {
+      "id": "deu-0387",
+      "priceCents": 7000
+    },
+    {
+      "id": "deu-0388",
+      "priceCents": 7090
+    },
+    {
+      "id": "deu-0389",
+      "priceCents": 7099
+    },
+    {
+      "id": "deu-0390",
+      "priceCents": 7100
+    },
+    {
+      "id": "deu-0391",
+      "priceCents": 7190
+    },
+    {
+      "id": "deu-0392",
+      "priceCents": 7199
+    },
+    {
+      "id": "deu-0393",
+      "priceCents": 7200
+    },
+    {
+      "id": "deu-0394",
+      "priceCents": 7290
+    },
+    {
+      "id": "deu-0395",
+      "priceCents": 7299
+    },
+    {
+      "id": "deu-0396",
+      "priceCents": 7300
+    },
+    {
+      "id": "deu-0397",
+      "priceCents": 7390
+    },
+    {
+      "id": "deu-0398",
+      "priceCents": 7399
+    },
+    {
+      "id": "deu-0399",
+      "priceCents": 7400
+    },
+    {
+      "id": "deu-0400",
+      "priceCents": 7490
+    },
+    {
+      "id": "deu-0401",
+      "priceCents": 7499
+    },
+    {
+      "id": "deu-0402",
+      "priceCents": 7500
+    },
+    {
+      "id": "deu-0403",
+      "priceCents": 7590
+    },
+    {
+      "id": "deu-0404",
+      "priceCents": 7599
+    },
+    {
+      "id": "deu-0405",
+      "priceCents": 7600
+    },
+    {
+      "id": "deu-0406",
+      "priceCents": 7690
+    },
+    {
+      "id": "deu-0407",
+      "priceCents": 7699
+    },
+    {
+      "id": "deu-0408",
+      "priceCents": 7700
+    },
+    {
+      "id": "deu-0409",
+      "priceCents": 7790
+    },
+    {
+      "id": "deu-0410",
+      "priceCents": 7799
+    },
+    {
+      "id": "deu-0411",
+      "priceCents": 7800
+    },
+    {
+      "id": "deu-0412",
+      "priceCents": 7890
+    },
+    {
+      "id": "deu-0413",
+      "priceCents": 7899
+    },
+    {
+      "id": "deu-0414",
+      "priceCents": 7900
+    },
+    {
+      "id": "deu-0415",
+      "priceCents": 7990
+    },
+    {
+      "id": "deu-0416",
+      "priceCents": 7999
+    },
+    {
+      "id": "deu-0417",
+      "priceCents": 8000
+    },
+    {
+      "id": "deu-0418",
+      "priceCents": 8090
+    },
+    {
+      "id": "deu-0419",
+      "priceCents": 8099
+    },
+    {
+      "id": "deu-0420",
+      "priceCents": 8100
+    },
+    {
+      "id": "deu-0421",
+      "priceCents": 8190
+    },
+    {
+      "id": "deu-0422",
+      "priceCents": 8199
+    },
+    {
+      "id": "deu-0423",
+      "priceCents": 8200
+    },
+    {
+      "id": "deu-0424",
+      "priceCents": 8290
+    },
+    {
+      "id": "deu-0425",
+      "priceCents": 8299
+    },
+    {
+      "id": "deu-0426",
+      "priceCents": 8300
+    },
+    {
+      "id": "deu-0427",
+      "priceCents": 8390
+    },
+    {
+      "id": "deu-0428",
+      "priceCents": 8399
+    },
+    {
+      "id": "deu-0429",
+      "priceCents": 8400
+    },
+    {
+      "id": "deu-0430",
+      "priceCents": 8490
+    },
+    {
+      "id": "deu-0431",
+      "priceCents": 8499
+    },
+    {
+      "id": "deu-0432",
+      "priceCents": 8500
+    },
+    {
+      "id": "deu-0433",
+      "priceCents": 8590
+    },
+    {
+      "id": "deu-0434",
+      "priceCents": 8599
+    },
+    {
+      "id": "deu-0435",
+      "priceCents": 8600
+    },
+    {
+      "id": "deu-0436",
+      "priceCents": 8690
+    },
+    {
+      "id": "deu-0437",
+      "priceCents": 8699
+    },
+    {
+      "id": "deu-0438",
+      "priceCents": 8700
+    },
+    {
+      "id": "deu-0439",
+      "priceCents": 8790
+    },
+    {
+      "id": "deu-0440",
+      "priceCents": 8799
+    },
+    {
+      "id": "deu-0441",
+      "priceCents": 8800
+    },
+    {
+      "id": "deu-0442",
+      "priceCents": 8890
+    },
+    {
+      "id": "deu-0443",
+      "priceCents": 8899
+    },
+    {
+      "id": "deu-0444",
+      "priceCents": 8900
+    },
+    {
+      "id": "deu-0445",
+      "priceCents": 8990
+    },
+    {
+      "id": "deu-0446",
+      "priceCents": 8999
+    },
+    {
+      "id": "deu-0447",
+      "priceCents": 9000
+    },
+    {
+      "id": "deu-0448",
+      "priceCents": 9090
+    },
+    {
+      "id": "deu-0449",
+      "priceCents": 9099
+    },
+    {
+      "id": "deu-0450",
+      "priceCents": 9100
+    },
+    {
+      "id": "deu-0451",
+      "priceCents": 9190
+    },
+    {
+      "id": "deu-0452",
+      "priceCents": 9199
+    },
+    {
+      "id": "deu-0453",
+      "priceCents": 9200
+    },
+    {
+      "id": "deu-0454",
+      "priceCents": 9290
+    },
+    {
+      "id": "deu-0455",
+      "priceCents": 9299
+    },
+    {
+      "id": "deu-0456",
+      "priceCents": 9300
+    },
+    {
+      "id": "deu-0457",
+      "priceCents": 9390
+    },
+    {
+      "id": "deu-0458",
+      "priceCents": 9399
+    },
+    {
+      "id": "deu-0459",
+      "priceCents": 9400
+    },
+    {
+      "id": "deu-0460",
+      "priceCents": 9490
+    },
+    {
+      "id": "deu-0461",
+      "priceCents": 9499
+    },
+    {
+      "id": "deu-0462",
+      "priceCents": 9500
+    },
+    {
+      "id": "deu-0463",
+      "priceCents": 9590
+    },
+    {
+      "id": "deu-0464",
+      "priceCents": 9599
+    },
+    {
+      "id": "deu-0465",
+      "priceCents": 9600
+    },
+    {
+      "id": "deu-0466",
+      "priceCents": 9690
+    },
+    {
+      "id": "deu-0467",
+      "priceCents": 9699
+    },
+    {
+      "id": "deu-0468",
+      "priceCents": 9700
+    },
+    {
+      "id": "deu-0469",
+      "priceCents": 9790
+    },
+    {
+      "id": "deu-0470",
+      "priceCents": 9799
+    },
+    {
+      "id": "deu-0471",
+      "priceCents": 9800
+    },
+    {
+      "id": "deu-0472",
+      "priceCents": 9890
+    },
+    {
+      "id": "deu-0473",
+      "priceCents": 9899
+    },
+    {
+      "id": "deu-0474",
+      "priceCents": 9900
+    },
+    {
+      "id": "deu-0475",
+      "priceCents": 9990
+    },
+    {
+      "id": "deu-0476",
+      "priceCents": 9999
+    },
+    {
+      "id": "deu-0477",
+      "priceCents": 10000
+    },
+    {
+      "id": "deu-0478",
+      "priceCents": 10099
+    },
+    {
+      "id": "deu-0479",
+      "priceCents": 10199
+    },
+    {
+      "id": "deu-0480",
+      "priceCents": 10299
+    },
+    {
+      "id": "deu-0481",
+      "priceCents": 10399
+    },
+    {
+      "id": "deu-0482",
+      "priceCents": 10499
+    },
+    {
+      "id": "deu-0483",
+      "priceCents": 10599
+    },
+    {
+      "id": "deu-0484",
+      "priceCents": 10699
+    },
+    {
+      "id": "deu-0485",
+      "priceCents": 10799
+    },
+    {
+      "id": "deu-0486",
+      "priceCents": 10899
+    },
+    {
+      "id": "deu-0487",
+      "priceCents": 10900
+    },
+    {
+      "id": "deu-0488",
+      "priceCents": 10999
+    },
+    {
+      "id": "deu-0489",
+      "priceCents": 11099
+    },
+    {
+      "id": "deu-0490",
+      "priceCents": 11199
+    },
+    {
+      "id": "deu-0491",
+      "priceCents": 11299
+    },
+    {
+      "id": "deu-0492",
+      "priceCents": 11399
+    },
+    {
+      "id": "deu-0493",
+      "priceCents": 11499
+    },
+    {
+      "id": "deu-0494",
+      "priceCents": 11599
+    },
+    {
+      "id": "deu-0495",
+      "priceCents": 11699
+    },
+    {
+      "id": "deu-0496",
+      "priceCents": 11799
+    },
+    {
+      "id": "deu-0497",
+      "priceCents": 11899
+    },
+    {
+      "id": "deu-0498",
+      "priceCents": 11900
+    },
+    {
+      "id": "deu-0499",
+      "priceCents": 11999
+    },
+    {
+      "id": "deu-0500",
+      "priceCents": 12099
+    },
+    {
+      "id": "deu-0501",
+      "priceCents": 12199
+    },
+    {
+      "id": "deu-0502",
+      "priceCents": 12299
+    },
+    {
+      "id": "deu-0503",
+      "priceCents": 12399
+    },
+    {
+      "id": "deu-0504",
+      "priceCents": 12499
+    },
+    {
+      "id": "deu-0505",
+      "priceCents": 12599
+    },
+    {
+      "id": "deu-0506",
+      "priceCents": 12699
+    },
+    {
+      "id": "deu-0507",
+      "priceCents": 12799
+    },
+    {
+      "id": "deu-0508",
+      "priceCents": 12899
+    },
+    {
+      "id": "deu-0509",
+      "priceCents": 12900
+    },
+    {
+      "id": "deu-0510",
+      "priceCents": 12999
+    },
+    {
+      "id": "deu-0511",
+      "priceCents": 13099
+    },
+    {
+      "id": "deu-0512",
+      "priceCents": 13199
+    },
+    {
+      "id": "deu-0513",
+      "priceCents": 13299
+    },
+    {
+      "id": "deu-0514",
+      "priceCents": 13399
+    },
+    {
+      "id": "deu-0515",
+      "priceCents": 13499
+    },
+    {
+      "id": "deu-0516",
+      "priceCents": 13599
+    },
+    {
+      "id": "deu-0517",
+      "priceCents": 13699
+    },
+    {
+      "id": "deu-0518",
+      "priceCents": 13799
+    },
+    {
+      "id": "deu-0519",
+      "priceCents": 13899
+    },
+    {
+      "id": "deu-0520",
+      "priceCents": 13900
+    },
+    {
+      "id": "deu-0521",
+      "priceCents": 13999
+    },
+    {
+      "id": "deu-0522",
+      "priceCents": 14099
+    },
+    {
+      "id": "deu-0523",
+      "priceCents": 14199
+    },
+    {
+      "id": "deu-0524",
+      "priceCents": 14299
+    },
+    {
+      "id": "deu-0525",
+      "priceCents": 14399
+    },
+    {
+      "id": "deu-0526",
+      "priceCents": 14499
+    },
+    {
+      "id": "deu-0527",
+      "priceCents": 14599
+    },
+    {
+      "id": "deu-0528",
+      "priceCents": 14699
+    },
+    {
+      "id": "deu-0529",
+      "priceCents": 14799
+    },
+    {
+      "id": "deu-0530",
+      "priceCents": 14899
+    },
+    {
+      "id": "deu-0531",
+      "priceCents": 14900
+    },
+    {
+      "id": "deu-0532",
+      "priceCents": 14999
+    },
+    {
+      "id": "deu-0533",
+      "priceCents": 15000
+    },
+    {
+      "id": "deu-0534",
+      "priceCents": 15099
+    },
+    {
+      "id": "deu-0535",
+      "priceCents": 15199
+    },
+    {
+      "id": "deu-0536",
+      "priceCents": 15299
+    },
+    {
+      "id": "deu-0537",
+      "priceCents": 15399
+    },
+    {
+      "id": "deu-0538",
+      "priceCents": 15499
+    },
+    {
+      "id": "deu-0539",
+      "priceCents": 15599
+    },
+    {
+      "id": "deu-0540",
+      "priceCents": 15699
+    },
+    {
+      "id": "deu-0541",
+      "priceCents": 15799
+    },
+    {
+      "id": "deu-0542",
+      "priceCents": 15899
+    },
+    {
+      "id": "deu-0543",
+      "priceCents": 15900
+    },
+    {
+      "id": "deu-0544",
+      "priceCents": 15999
+    },
+    {
+      "id": "deu-0545",
+      "priceCents": 16099
+    },
+    {
+      "id": "deu-0546",
+      "priceCents": 16199
+    },
+    {
+      "id": "deu-0547",
+      "priceCents": 16299
+    },
+    {
+      "id": "deu-0548",
+      "priceCents": 16399
+    },
+    {
+      "id": "deu-0549",
+      "priceCents": 16499
+    },
+    {
+      "id": "deu-0550",
+      "priceCents": 16599
+    },
+    {
+      "id": "deu-0551",
+      "priceCents": 16699
+    },
+    {
+      "id": "deu-0552",
+      "priceCents": 16799
+    },
+    {
+      "id": "deu-0553",
+      "priceCents": 16899
+    },
+    {
+      "id": "deu-0554",
+      "priceCents": 16900
+    },
+    {
+      "id": "deu-0555",
+      "priceCents": 16999
+    },
+    {
+      "id": "deu-0556",
+      "priceCents": 17099
+    },
+    {
+      "id": "deu-0557",
+      "priceCents": 17199
+    },
+    {
+      "id": "deu-0558",
+      "priceCents": 17299
+    },
+    {
+      "id": "deu-0559",
+      "priceCents": 17399
+    },
+    {
+      "id": "deu-0560",
+      "priceCents": 17499
+    },
+    {
+      "id": "deu-0561",
+      "priceCents": 17599
+    },
+    {
+      "id": "deu-0562",
+      "priceCents": 17699
+    },
+    {
+      "id": "deu-0563",
+      "priceCents": 17799
+    },
+    {
+      "id": "deu-0564",
+      "priceCents": 17899
+    },
+    {
+      "id": "deu-0565",
+      "priceCents": 17900
+    },
+    {
+      "id": "deu-0566",
+      "priceCents": 17999
+    },
+    {
+      "id": "deu-0567",
+      "priceCents": 18099
+    },
+    {
+      "id": "deu-0568",
+      "priceCents": 18199
+    },
+    {
+      "id": "deu-0569",
+      "priceCents": 18299
+    },
+    {
+      "id": "deu-0570",
+      "priceCents": 18399
+    },
+    {
+      "id": "deu-0571",
+      "priceCents": 18499
+    },
+    {
+      "id": "deu-0572",
+      "priceCents": 18599
+    },
+    {
+      "id": "deu-0573",
+      "priceCents": 18699
+    },
+    {
+      "id": "deu-0574",
+      "priceCents": 18799
+    },
+    {
+      "id": "deu-0575",
+      "priceCents": 18899
+    },
+    {
+      "id": "deu-0576",
+      "priceCents": 18900
+    },
+    {
+      "id": "deu-0577",
+      "priceCents": 18999
+    },
+    {
+      "id": "deu-0578",
+      "priceCents": 19000
+    },
+    {
+      "id": "deu-0579",
+      "priceCents": 19099
+    },
+    {
+      "id": "deu-0580",
+      "priceCents": 19199
+    },
+    {
+      "id": "deu-0581",
+      "priceCents": 19299
+    },
+    {
+      "id": "deu-0582",
+      "priceCents": 19399
+    },
+    {
+      "id": "deu-0583",
+      "priceCents": 19499
+    },
+    {
+      "id": "deu-0584",
+      "priceCents": 19599
+    },
+    {
+      "id": "deu-0585",
+      "priceCents": 19699
+    },
+    {
+      "id": "deu-0586",
+      "priceCents": 19799
+    },
+    {
+      "id": "deu-0587",
+      "priceCents": 19899
+    },
+    {
+      "id": "deu-0588",
+      "priceCents": 19900
+    },
+    {
+      "id": "deu-0589",
+      "priceCents": 19999
+    },
+    {
+      "id": "deu-0590",
+      "priceCents": 20000
+    },
+    {
+      "id": "deu-0591",
+      "priceCents": 20499
+    },
+    {
+      "id": "deu-0592",
+      "priceCents": 20900
+    },
+    {
+      "id": "deu-0593",
+      "priceCents": 20999
+    },
+    {
+      "id": "deu-0594",
+      "priceCents": 21499
+    },
+    {
+      "id": "deu-0595",
+      "priceCents": 21900
+    },
+    {
+      "id": "deu-0596",
+      "priceCents": 21999
+    },
+    {
+      "id": "deu-0597",
+      "priceCents": 22499
+    },
+    {
+      "id": "deu-0598",
+      "priceCents": 22900
+    },
+    {
+      "id": "deu-0599",
+      "priceCents": 22999
+    },
+    {
+      "id": "deu-0600",
+      "priceCents": 23499
+    },
+    {
+      "id": "deu-0601",
+      "priceCents": 23900
+    },
+    {
+      "id": "deu-0602",
+      "priceCents": 23999
+    },
+    {
+      "id": "deu-0603",
+      "priceCents": 24499
+    },
+    {
+      "id": "deu-0604",
+      "priceCents": 24900
+    },
+    {
+      "id": "deu-0605",
+      "priceCents": 24999
+    },
+    {
+      "id": "deu-0606",
+      "priceCents": 25000
+    },
+    {
+      "id": "deu-0607",
+      "priceCents": 25499
+    },
+    {
+      "id": "deu-0608",
+      "priceCents": 25900
+    },
+    {
+      "id": "deu-0609",
+      "priceCents": 25999
+    },
+    {
+      "id": "deu-0610",
+      "priceCents": 26499
+    },
+    {
+      "id": "deu-0611",
+      "priceCents": 26900
+    },
+    {
+      "id": "deu-0612",
+      "priceCents": 26999
+    },
+    {
+      "id": "deu-0613",
+      "priceCents": 27499
+    },
+    {
+      "id": "deu-0614",
+      "priceCents": 27900
+    },
+    {
+      "id": "deu-0615",
+      "priceCents": 27999
+    },
+    {
+      "id": "deu-0616",
+      "priceCents": 28499
+    },
+    {
+      "id": "deu-0617",
+      "priceCents": 28900
+    },
+    {
+      "id": "deu-0618",
+      "priceCents": 28999
+    },
+    {
+      "id": "deu-0619",
+      "priceCents": 29000
+    },
+    {
+      "id": "deu-0620",
+      "priceCents": 29499
+    },
+    {
+      "id": "deu-0621",
+      "priceCents": 29900
+    },
+    {
+      "id": "deu-0622",
+      "priceCents": 29999
+    },
+    {
+      "id": "deu-0623",
+      "priceCents": 30000
+    },
+    {
+      "id": "deu-0624",
+      "priceCents": 30499
+    },
+    {
+      "id": "deu-0625",
+      "priceCents": 30900
+    },
+    {
+      "id": "deu-0626",
+      "priceCents": 30999
+    },
+    {
+      "id": "deu-0627",
+      "priceCents": 31499
+    },
+    {
+      "id": "deu-0628",
+      "priceCents": 31900
+    },
+    {
+      "id": "deu-0629",
+      "priceCents": 31999
+    },
+    {
+      "id": "deu-0630",
+      "priceCents": 32499
+    },
+    {
+      "id": "deu-0631",
+      "priceCents": 32900
+    },
+    {
+      "id": "deu-0632",
+      "priceCents": 32999
+    },
+    {
+      "id": "deu-0633",
+      "priceCents": 33499
+    },
+    {
+      "id": "deu-0634",
+      "priceCents": 33900
+    },
+    {
+      "id": "deu-0635",
+      "priceCents": 33999
+    },
+    {
+      "id": "deu-0636",
+      "priceCents": 34499
+    },
+    {
+      "id": "deu-0637",
+      "priceCents": 34900
+    },
+    {
+      "id": "deu-0638",
+      "priceCents": 34999
+    },
+    {
+      "id": "deu-0639",
+      "priceCents": 35499
+    },
+    {
+      "id": "deu-0640",
+      "priceCents": 35900
+    },
+    {
+      "id": "deu-0641",
+      "priceCents": 35999
+    },
+    {
+      "id": "deu-0642",
+      "priceCents": 36499
+    },
+    {
+      "id": "deu-0643",
+      "priceCents": 36900
+    },
+    {
+      "id": "deu-0644",
+      "priceCents": 36999
+    },
+    {
+      "id": "deu-0645",
+      "priceCents": 37499
+    },
+    {
+      "id": "deu-0646",
+      "priceCents": 37900
+    },
+    {
+      "id": "deu-0647",
+      "priceCents": 37999
+    },
+    {
+      "id": "deu-0648",
+      "priceCents": 38499
+    },
+    {
+      "id": "deu-0649",
+      "priceCents": 38900
+    },
+    {
+      "id": "deu-0650",
+      "priceCents": 38999
+    },
+    {
+      "id": "deu-0651",
+      "priceCents": 39000
+    },
+    {
+      "id": "deu-0652",
+      "priceCents": 39499
+    },
+    {
+      "id": "deu-0653",
+      "priceCents": 39900
+    },
+    {
+      "id": "deu-0654",
+      "priceCents": 39999
+    },
+    {
+      "id": "deu-0655",
+      "priceCents": 40000
+    },
+    {
+      "id": "deu-0656",
+      "priceCents": 40499
+    },
+    {
+      "id": "deu-0657",
+      "priceCents": 40900
+    },
+    {
+      "id": "deu-0658",
+      "priceCents": 40999
+    },
+    {
+      "id": "deu-0659",
+      "priceCents": 41499
+    },
+    {
+      "id": "deu-0660",
+      "priceCents": 41900
+    },
+    {
+      "id": "deu-0661",
+      "priceCents": 41999
+    },
+    {
+      "id": "deu-0662",
+      "priceCents": 42499
+    },
+    {
+      "id": "deu-0663",
+      "priceCents": 42900
+    },
+    {
+      "id": "deu-0664",
+      "priceCents": 42999
+    },
+    {
+      "id": "deu-0665",
+      "priceCents": 43499
+    },
+    {
+      "id": "deu-0666",
+      "priceCents": 43900
+    },
+    {
+      "id": "deu-0667",
+      "priceCents": 43999
+    },
+    {
+      "id": "deu-0668",
+      "priceCents": 44499
+    },
+    {
+      "id": "deu-0669",
+      "priceCents": 44900
+    },
+    {
+      "id": "deu-0670",
+      "priceCents": 44999
+    },
+    {
+      "id": "deu-0671",
+      "priceCents": 45499
+    },
+    {
+      "id": "deu-0672",
+      "priceCents": 45900
+    },
+    {
+      "id": "deu-0673",
+      "priceCents": 45999
+    },
+    {
+      "id": "deu-0674",
+      "priceCents": 46499
+    },
+    {
+      "id": "deu-0675",
+      "priceCents": 46900
+    },
+    {
+      "id": "deu-0676",
+      "priceCents": 46999
+    },
+    {
+      "id": "deu-0677",
+      "priceCents": 47499
+    },
+    {
+      "id": "deu-0678",
+      "priceCents": 47900
+    },
+    {
+      "id": "deu-0679",
+      "priceCents": 47999
+    },
+    {
+      "id": "deu-0680",
+      "priceCents": 48499
+    },
+    {
+      "id": "deu-0681",
+      "priceCents": 48900
+    },
+    {
+      "id": "deu-0682",
+      "priceCents": 48999
+    },
+    {
+      "id": "deu-0683",
+      "priceCents": 49000
+    },
+    {
+      "id": "deu-0684",
+      "priceCents": 49499
+    },
+    {
+      "id": "deu-0685",
+      "priceCents": 49900
+    },
+    {
+      "id": "deu-0686",
+      "priceCents": 49999
+    },
+    {
+      "id": "deu-0687",
+      "priceCents": 50000
+    },
+    {
+      "id": "deu-0688",
+      "priceCents": 50900
+    },
+    {
+      "id": "deu-0689",
+      "priceCents": 50999
+    },
+    {
+      "id": "deu-0690",
+      "priceCents": 51900
+    },
+    {
+      "id": "deu-0691",
+      "priceCents": 51999
+    },
+    {
+      "id": "deu-0692",
+      "priceCents": 52900
+    },
+    {
+      "id": "deu-0693",
+      "priceCents": 52999
+    },
+    {
+      "id": "deu-0694",
+      "priceCents": 53900
+    },
+    {
+      "id": "deu-0695",
+      "priceCents": 53999
+    },
+    {
+      "id": "deu-0696",
+      "priceCents": 54900
+    },
+    {
+      "id": "deu-0697",
+      "priceCents": 54999
+    },
+    {
+      "id": "deu-0698",
+      "priceCents": 55900
+    },
+    {
+      "id": "deu-0699",
+      "priceCents": 55999
+    },
+    {
+      "id": "deu-0700",
+      "priceCents": 56900
+    },
+    {
+      "id": "deu-0701",
+      "priceCents": 56999
+    },
+    {
+      "id": "deu-0702",
+      "priceCents": 57900
+    },
+    {
+      "id": "deu-0703",
+      "priceCents": 57999
+    },
+    {
+      "id": "deu-0704",
+      "priceCents": 58900
+    },
+    {
+      "id": "deu-0705",
+      "priceCents": 58999
+    },
+    {
+      "id": "deu-0706",
+      "priceCents": 59000
+    },
+    {
+      "id": "deu-0707",
+      "priceCents": 59900
+    },
+    {
+      "id": "deu-0708",
+      "priceCents": 59999
+    },
+    {
+      "id": "deu-0709",
+      "priceCents": 60000
+    },
+    {
+      "id": "deu-0710",
+      "priceCents": 60900
+    },
+    {
+      "id": "deu-0711",
+      "priceCents": 60999
+    },
+    {
+      "id": "deu-0712",
+      "priceCents": 61900
+    },
+    {
+      "id": "deu-0713",
+      "priceCents": 61999
+    },
+    {
+      "id": "deu-0714",
+      "priceCents": 62900
+    },
+    {
+      "id": "deu-0715",
+      "priceCents": 62999
+    },
+    {
+      "id": "deu-0716",
+      "priceCents": 63900
+    },
+    {
+      "id": "deu-0717",
+      "priceCents": 63999
+    },
+    {
+      "id": "deu-0718",
+      "priceCents": 64900
+    },
+    {
+      "id": "deu-0719",
+      "priceCents": 64999
+    },
+    {
+      "id": "deu-0720",
+      "priceCents": 65900
+    },
+    {
+      "id": "deu-0721",
+      "priceCents": 65999
+    },
+    {
+      "id": "deu-0722",
+      "priceCents": 66900
+    },
+    {
+      "id": "deu-0723",
+      "priceCents": 66999
+    },
+    {
+      "id": "deu-0724",
+      "priceCents": 67900
+    },
+    {
+      "id": "deu-0725",
+      "priceCents": 67999
+    },
+    {
+      "id": "deu-0726",
+      "priceCents": 68900
+    },
+    {
+      "id": "deu-0727",
+      "priceCents": 68999
+    },
+    {
+      "id": "deu-0728",
+      "priceCents": 69000
+    },
+    {
+      "id": "deu-0729",
+      "priceCents": 69900
+    },
+    {
+      "id": "deu-0730",
+      "priceCents": 69999
+    },
+    {
+      "id": "deu-0731",
+      "priceCents": 70000
+    },
+    {
+      "id": "deu-0732",
+      "priceCents": 70900
+    },
+    {
+      "id": "deu-0733",
+      "priceCents": 70999
+    },
+    {
+      "id": "deu-0734",
+      "priceCents": 71900
+    },
+    {
+      "id": "deu-0735",
+      "priceCents": 71999
+    },
+    {
+      "id": "deu-0736",
+      "priceCents": 72900
+    },
+    {
+      "id": "deu-0737",
+      "priceCents": 72999
+    },
+    {
+      "id": "deu-0738",
+      "priceCents": 73900
+    },
+    {
+      "id": "deu-0739",
+      "priceCents": 73999
+    },
+    {
+      "id": "deu-0740",
+      "priceCents": 74900
+    },
+    {
+      "id": "deu-0741",
+      "priceCents": 74999
+    },
+    {
+      "id": "deu-0742",
+      "priceCents": 75900
+    },
+    {
+      "id": "deu-0743",
+      "priceCents": 75999
+    },
+    {
+      "id": "deu-0744",
+      "priceCents": 76900
+    },
+    {
+      "id": "deu-0745",
+      "priceCents": 76999
+    },
+    {
+      "id": "deu-0746",
+      "priceCents": 77900
+    },
+    {
+      "id": "deu-0747",
+      "priceCents": 77999
+    },
+    {
+      "id": "deu-0748",
+      "priceCents": 78900
+    },
+    {
+      "id": "deu-0749",
+      "priceCents": 78999
+    },
+    {
+      "id": "deu-0750",
+      "priceCents": 79000
+    },
+    {
+      "id": "deu-0751",
+      "priceCents": 79900
+    },
+    {
+      "id": "deu-0752",
+      "priceCents": 79999
+    },
+    {
+      "id": "deu-0753",
+      "priceCents": 80000
+    },
+    {
+      "id": "deu-0754",
+      "priceCents": 80900
+    },
+    {
+      "id": "deu-0755",
+      "priceCents": 80999
+    },
+    {
+      "id": "deu-0756",
+      "priceCents": 81900
+    },
+    {
+      "id": "deu-0757",
+      "priceCents": 81999
+    },
+    {
+      "id": "deu-0758",
+      "priceCents": 82900
+    },
+    {
+      "id": "deu-0759",
+      "priceCents": 82999
+    },
+    {
+      "id": "deu-0760",
+      "priceCents": 83900
+    },
+    {
+      "id": "deu-0761",
+      "priceCents": 83999
+    },
+    {
+      "id": "deu-0762",
+      "priceCents": 84900
+    },
+    {
+      "id": "deu-0763",
+      "priceCents": 84999
+    },
+    {
+      "id": "deu-0764",
+      "priceCents": 85900
+    },
+    {
+      "id": "deu-0765",
+      "priceCents": 85999
+    },
+    {
+      "id": "deu-0766",
+      "priceCents": 86900
+    },
+    {
+      "id": "deu-0767",
+      "priceCents": 86999
+    },
+    {
+      "id": "deu-0768",
+      "priceCents": 87900
+    },
+    {
+      "id": "deu-0769",
+      "priceCents": 87999
+    },
+    {
+      "id": "deu-0770",
+      "priceCents": 88900
+    },
+    {
+      "id": "deu-0771",
+      "priceCents": 88999
+    },
+    {
+      "id": "deu-0772",
+      "priceCents": 89000
+    },
+    {
+      "id": "deu-0773",
+      "priceCents": 89900
+    },
+    {
+      "id": "deu-0774",
+      "priceCents": 89999
+    },
+    {
+      "id": "deu-0775",
+      "priceCents": 90000
+    },
+    {
+      "id": "deu-0776",
+      "priceCents": 90900
+    },
+    {
+      "id": "deu-0777",
+      "priceCents": 90999
+    },
+    {
+      "id": "deu-0778",
+      "priceCents": 91900
+    },
+    {
+      "id": "deu-0779",
+      "priceCents": 91999
+    },
+    {
+      "id": "deu-0780",
+      "priceCents": 92900
+    },
+    {
+      "id": "deu-0781",
+      "priceCents": 92999
+    },
+    {
+      "id": "deu-0782",
+      "priceCents": 93900
+    },
+    {
+      "id": "deu-0783",
+      "priceCents": 93999
+    },
+    {
+      "id": "deu-0784",
+      "priceCents": 94900
+    },
+    {
+      "id": "deu-0785",
+      "priceCents": 94999
+    },
+    {
+      "id": "deu-0786",
+      "priceCents": 95900
+    },
+    {
+      "id": "deu-0787",
+      "priceCents": 95999
+    },
+    {
+      "id": "deu-0788",
+      "priceCents": 96900
+    },
+    {
+      "id": "deu-0789",
+      "priceCents": 96999
+    },
+    {
+      "id": "deu-0790",
+      "priceCents": 97900
+    },
+    {
+      "id": "deu-0791",
+      "priceCents": 97999
+    },
+    {
+      "id": "deu-0792",
+      "priceCents": 98900
+    },
+    {
+      "id": "deu-0793",
+      "priceCents": 98999
+    },
+    {
+      "id": "deu-0794",
+      "priceCents": 99000
+    },
+    {
+      "id": "deu-0795",
+      "priceCents": 99900
+    },
+    {
+      "id": "deu-0796",
+      "priceCents": 99999
+    },
+    {
+      "id": "deu-0797",
+      "priceCents": 100000
+    },
+    {
+      "id": "deu-0798",
+      "priceCents": 109999
+    },
+    {
+      "id": "deu-0799",
+      "priceCents": 119999
+    }
+  ]
+}

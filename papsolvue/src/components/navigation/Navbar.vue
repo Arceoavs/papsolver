@@ -1,31 +1,20 @@
-<template lang="pug">
-v-app-bar(app dense color="dp1")
-  v-row(justify="start" align="center" no-gutters)
-    v-col.hidden-md-and-up(cols="8")
-      v-app-bar-nav-icon(
-        @click.stop="$emit('drawer', true)")
-    v-col(cols="1")
-      router-link(:to="{name: 'Home'}")
-        v-img(src="@/assets/logo.svg"
-          max-height="30px"
-          contain)
-  v-spacer
-  v-divider.hidden-sm-and-down(vertical, inset)
-  v-toolbar-items.hidden-sm-and-down
-    v-btn(v-for="item in items"
-      :key="item.tag"
-      text
-      :to="item.to")
-      | {{item.tag}}
+<template>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <RouterLink class="brand" :to="{ name: 'home' }" aria-label="PapSolver home">
+        <img src="../../assets/logo.svg" alt="" width="34" height="34" />
+        <span>PapSolver</span>
+      </RouterLink>
+
+      <div class="nav-links">
+        <RouterLink :to="{ name: 'itunes' }">iTunes</RouterLink>
+        <RouterLink :to="{ name: 'general' }">General</RouterLink>
+        <RouterLink :to="{ name: 'about' }">About</RouterLink>
+      </div>
+    </nav>
+  </header>
 </template>
 
-<script>
-import navItems from "./navItems.json";
-export default {
-  data() {
-    return {
-      items: navItems
-    };
-  }
-};
+<script setup lang="ts">
+import { RouterLink } from "vue-router";
 </script>
