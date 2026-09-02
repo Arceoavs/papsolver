@@ -1,25 +1,23 @@
-FROM ghcr.io/astral-sh/uv:0.11.21 AS uv
+FROM golang:1.27.1-alpine3.24 AS build
 
-FROM python:3.14-slim
+WORKDIR /src
 
-COPY --from=uv /uv /uvx /bin/
+COPY go.mod ./
+COPY api ./api
+COPY cmd ./cmd
+COPY internal ./internal
 
-ENV PATH="/app/.venv/bin:$PATH" \
-    PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    UV_COMPILE_BYTECODE=1 \
-    UV_LINK_MODE=copy
+RUN CGO_ENABLED=0 GOOS=linux go build \
+    -trimpath \
+    -ldflags="-s -w" \
+    -o /out/papsolver \
+    ./cmd/papsolver
 
-WORKDIR /app
+FROM scratch
 
-COPY pyproject.toml uv.lock ./
-RUN uv sync --locked --no-dev --no-install-project
+COPY --from=build /out/papsolver /papsolver
 
-COPY app ./app
-
-RUN groupadd --system app && useradd --system --gid app --home-dir /app app
-USER app
-
+USER 65532:65532
 EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host=0.0.0.0", "--port=8000"]
+ENTRYPOINT ["/papsolver"]

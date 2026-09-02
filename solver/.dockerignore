@@ -1,7 +1,5 @@
 .git
-.pytest_cache
-.ruff_cache
-.venv
-__pycache__
-tests
-files
+.idea
+.vscode
+coverage.out
+papsolver

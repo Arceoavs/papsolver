@@ -4,9 +4,9 @@ PapSolver finds a combination of repeated prices that spends a prepaid balance
 exactly. Among multiple exact solutions, it returns one with the fewest
 purchases.
 
-The project contains a Vue 3 browser application and a stateless FastAPI
-service. Prices and balances cross the API as integer cents, so monetary values
-are never solved with floating-point arithmetic.
+The project contains a Vue 3 browser application and a stateless Go service.
+Prices and balances cross the API as integer cents, so monetary values are never
+solved with floating-point arithmetic.
 
 ## Run with Docker Compose
 
@@ -19,7 +19,7 @@ docker compose up --build
 Then open:
 
 - Frontend: <http://localhost:8080>
-- Backend API documentation: <http://localhost:8000/docs>
+- Backend OpenAPI contract: <http://localhost:8000/openapi.yaml>
 - Backend health check: <http://localhost:8000/health>
 
 Override the published ports when necessary:
@@ -34,13 +34,11 @@ needed.
 
 ## Development
 
-The backend requires Python 3.14 and
-[uv](https://docs.astral.sh/uv/):
+The backend requires Go 1.27 or newer:
 
 ```sh
 cd solver
-uv sync --locked
-uv run uvicorn app.main:app --reload
+go run ./cmd/papsolver
 ```
 
 The frontend requires [Bun](https://bun.sh/):
@@ -58,9 +56,9 @@ backend at <http://localhost:8000>.
 
 ```sh
 cd solver
-uv run pytest
-uv run ruff check .
-uv run ruff format --check .
+go test ./...
+go test -race ./...
+go vet ./...
 
 cd ../papsolvue
 bun run test
@@ -71,9 +69,10 @@ bun run build
 
 - `papsolvue/`: Vue 3, TypeScript, Vue Router, Vite, and native `fetch`, managed
   with Bun. A multi-stage container builds the SPA and serves it through Nginx.
-- `solver/`: FastAPI, Pydantic, and an exact integer-cent dynamic-programming
-  solver, managed with uv. Valid problems without an exact solution return
-  `409 Conflict`.
+- `solver/`: dependency-free Go HTTP service with private monetary domain types,
+  strict JSON decoding, bounded solver concurrency, and an exact integer-cent
+  dynamic-programming algorithm. Valid problems without an exact solution
+  return `409 Conflict`.
 - `kubernetes/`: Kustomize resources for the same two containers.
 - `scripts/import_apple_prices.py`: offline normalizer for an authenticated App
   Store Connect JSON or CSV price export.

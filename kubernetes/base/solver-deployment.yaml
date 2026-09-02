@@ -17,6 +17,9 @@ spec:
         - name: solver
           image: arceo99/solver:latest
           imagePullPolicy: Always
+          env:
+            - name: SOLVER_MAX_CONCURRENT
+              value: "2"
           ports:
             - containerPort: 8000
           readinessProbe:

@@ -9,13 +9,11 @@
       "webRoot": "${workspaceFolder}/papsolvue"
     },
     {
-      "name": "Backend: FastAPI",
-      "type": "debugpy",
+      "name": "Backend: Go",
+      "type": "go",
       "request": "launch",
-      "module": "uvicorn",
-      "cwd": "${workspaceFolder}/solver",
-      "args": ["app.main:app", "--reload"],
-      "justMyCode": true
+      "mode": "debug",
+      "program": "${workspaceFolder}/solver/cmd/papsolver"
     }
   ]
 }

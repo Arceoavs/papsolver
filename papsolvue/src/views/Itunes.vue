@@ -125,10 +125,10 @@
             Exact match for <strong>{{ formatEuros(targetCents ?? 0) }}</strong>
           </p>
           <ul class="purchase-list">
-            <li v-for="item in purchases" :key="item.tier">
-              <span class="quantity">{{ item.value }}×</span>
+            <li v-for="item in purchases" :key="item.tierId">
+              <span class="quantity">{{ item.quantity }}×</span>
               <span>{{ formatEuros(item.priceCents) }}</span>
-              <span class="line-total">{{ formatEuros(item.priceCents * item.value) }}</span>
+              <span class="line-total">{{ formatEuros(item.priceCents * item.quantity) }}</span>
             </li>
           </ul>
         </div>
@@ -193,11 +193,7 @@ const filteredTiers = computed(() => {
 const tiersById = new Map(availableTiers.map((tier) => [tier.id, tier]));
 const purchases = computed(() =>
   assignment.value
-    .filter((item) => item.value > 0 && tiersById.has(item.tier))
-    .map((item) => ({
-      ...item,
-      priceCents: tiersById.get(item.tier)?.priceCents ?? 0,
-    })),
+    .filter((item) => item.quantity > 0 && tiersById.has(item.tierId)),
 );
 
 function selectAll(): void {
@@ -227,17 +223,15 @@ async function submit(): Promise<void> {
 
   const tiers: Tier[] = selectedTierIds.value.flatMap((id) => {
     const price = tiersById.get(id);
-    return price
-      ? [{ desc: id, price: { int: price.priceCents, full: price.priceCents / 100 } }]
-      : [];
+    return price ? [{ id, priceCents: price.priceCents }] : [];
   });
 
   try {
     const result = await solveBalance(
-      { tiers, target: targetCents.value },
+      { tiers, targetCents: targetCents.value },
       activeRequest.signal,
     );
-    assignment.value = result.assignment;
+    assignment.value = result.assignments;
     state.value = "success";
   } catch (error) {
     if (error instanceof DOMException && error.name === "AbortError") return;

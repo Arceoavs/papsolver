@@ -2,23 +2,31 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { NoSolutionError, solveBalance, type SolveRequest } from "./solver";
 
 const request: SolveRequest = {
-  target: 198,
-  tiers: [{ desc: "tier-99", price: { int: 99, full: 0.99 } }],
+  targetCents: 198,
+  tiers: [{ id: "tier-99", priceCents: 99 }],
 };
 
 afterEach(() => vi.restoreAllMocks());
 
 describe("solveBalance", () => {
-  it("posts the established request contract to the proxied API", async () => {
+  it("posts the integer-cent request contract to the proxied API", async () => {
     const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
       new Response(
-        JSON.stringify({ assignment: [{ tier: "tier-99", value: 2 }] }),
+        JSON.stringify({
+          targetCents: 198,
+          purchaseCount: 2,
+          assignments: [
+            { tierId: "tier-99", priceCents: 99, quantity: 2 },
+          ],
+        }),
         { status: 200, headers: { "Content-Type": "application/json" } },
       ),
     );
 
     await expect(solveBalance(request)).resolves.toEqual({
-      assignment: [{ tier: "tier-99", value: 2 }],
+      targetCents: 198,
+      purchaseCount: 2,
+      assignments: [{ tierId: "tier-99", priceCents: 99, quantity: 2 }],
     });
     expect(fetchMock).toHaveBeenCalledWith(
       "/api/solve",
@@ -31,10 +39,15 @@ describe("solveBalance", () => {
 
   it("turns a 409 response into an explicit no-solution result", async () => {
     vi.spyOn(globalThis, "fetch").mockResolvedValue(
-      new Response(JSON.stringify({ detail: "No exact solution" }), {
-        status: 409,
-        headers: { "Content-Type": "application/json" },
-      }),
+      new Response(
+        JSON.stringify({
+          error: { code: "no_exact_solution", message: "No exact solution" },
+        }),
+        {
+          status: 409,
+          headers: { "Content-Type": "application/json" },
+        },
+      ),
     );
 
     await expect(solveBalance(request)).rejects.toEqual(

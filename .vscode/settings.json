@@ -1,8 +1,8 @@
 {
-  "python.defaultInterpreterPath": "${workspaceFolder}/solver/.venv/bin/python",
   "editor.rulers": [100],
-  "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff",
+  "[go]": {
     "editor.formatOnSave": true
-  }
+  },
+  "go.formatTool": "gofmt",
+  "go.toolsManagement.autoUpdate": true
 }

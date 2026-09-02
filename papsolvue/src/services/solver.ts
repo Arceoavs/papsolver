@@ -1,28 +1,29 @@
 export interface Tier {
-  desc: string;
-  price: {
-    int: number;
-    full: number;
-  };
+  id: string;
+  priceCents: number;
 }
 
 export interface SolveRequest {
   tiers: Tier[];
-  target: number;
+  targetCents: number;
 }
 
 export interface Assignment {
-  tier: string;
-  value: number;
+  tierId: string;
+  priceCents: number;
+  quantity: number;
 }
 
 export interface SolveResponse {
-  assignment: Assignment[];
-  max_object_value?: number;
+  targetCents: number;
+  purchaseCount: number;
+  assignments: Assignment[];
 }
 
 interface ErrorResponse {
-  detail?: string;
+  error?: {
+    message?: string;
+  };
 }
 
 export class NoSolutionError extends Error {
@@ -35,7 +36,9 @@ export class NoSolutionError extends Error {
 async function readError(response: Response): Promise<string | undefined> {
   try {
     const body = (await response.json()) as ErrorResponse;
-    return typeof body.detail === "string" ? body.detail : undefined;
+    return typeof body.error?.message === "string"
+      ? body.error.message
+      : undefined;
   } catch {
     return undefined;
   }

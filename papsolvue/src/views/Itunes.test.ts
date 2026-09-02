@@ -17,7 +17,13 @@ describe("iTunes solver view", () => {
   it("shows the returned exact purchase combination", async () => {
     vi.spyOn(globalThis, "fetch").mockResolvedValue(
       new Response(
-        JSON.stringify({ assignment: [{ tier: "deu-0009", value: 2 }] }),
+        JSON.stringify({
+          targetCents: 198,
+          purchaseCount: 2,
+          assignments: [
+            { tierId: "deu-0009", priceCents: 99, quantity: 2 },
+          ],
+        }),
         { status: 200, headers: { "Content-Type": "application/json" } },
       ),
     );
@@ -34,10 +40,18 @@ describe("iTunes solver view", () => {
 
   it("renders an actionable message when no exact solution exists", async () => {
     vi.spyOn(globalThis, "fetch").mockResolvedValue(
-      new Response(JSON.stringify({ detail: "No exact combination exists." }), {
-        status: 409,
-        headers: { "Content-Type": "application/json" },
-      }),
+      new Response(
+        JSON.stringify({
+          error: {
+            code: "no_exact_solution",
+            message: "No exact combination exists.",
+          },
+        }),
+        {
+          status: 409,
+          headers: { "Content-Type": "application/json" },
+        },
+      ),
     );
     const wrapper = mount(Itunes);
     await fillValidForm(wrapper);

@@ -1,61 +1,79 @@
 # PapSolver API
 
-FastAPI backend for finding a set of repeated price tiers that adds up to a
-prepaid balance exactly. If several exact combinations exist, the solver returns
-one using the fewest purchases. Request tier order is the deterministic tie-breaker.
+Stateless Go service that finds a repeated combination of integer-cent price
+points that reaches a target exactly. Among exact solutions it returns one with
+the fewest purchases; request order deterministically breaks ties.
 
-The solver uses integer cents throughout and dynamic programming. Targets are
-limited to 100,000 cents and requests to 1,000 unique, positive price tiers so API
-work and memory stay bounded. Individual tier prices may be as high as 1,000,000
-cents; tiers above the target are safely ignored by the solver and returned with a
-zero assignment.
+The service uses Go's standard library and has no third-party runtime
+dependencies. Inputs are converted into validated domain types before they can
+reach the solver.
 
 ## Local development
 
-Python 3.14 and [uv](https://docs.astral.sh/uv/) are required.
+Go 1.27 or newer is required:
 
 ```sh
-uv sync --locked
-uv run uvicorn app.main:app --reload
+go run ./cmd/papsolver
 ```
 
-The API is available at <http://localhost:8000>, with interactive documentation
-at <http://localhost:8000/docs>.
+The server listens on `http://localhost:8000`. Set `PORT` to change the port and
+`SOLVER_MAX_CONCURRENT` to bound simultaneous CPU-intensive solver calls.
 
-## Test and lint
+## Checks
 
 ```sh
-uv run pytest
-uv run ruff check .
-uv run ruff format --check .
+go test ./...
+go test -race ./...
+go vet ./...
+go test -run '^$' -bench . ./internal/solver
 ```
 
 ## API
 
-`POST /solve` preserves the original request shape:
+The complete contract is in [`api/openapi.yaml`](api/openapi.yaml) and is served
+at `GET /openapi.yaml`.
+
+`POST /solve` accepts integer cents as the only monetary representation:
 
 ```json
 {
-  "target": 685,
+  "targetCents": 696,
   "tiers": [
-    {"desc": "tier0", "price": {"int": 99, "full": 0.99}},
-    {"desc": "tier1", "price": {"int": 199, "full": 1.99}}
+    {"id": "deu-0009", "priceCents": 99},
+    {"id": "deu-0021", "priceCents": 199}
   ]
 }
 ```
 
-A successful response includes all submitted tiers, including zero assignments:
+A successful response contains only price points used by the solution:
 
 ```json
 {
-  "max_object_value": 685,
-  "assignment": [
-    {"tier": "tier0", "value": 1},
-    {"tier": "tier1", "value": 3}
+  "targetCents": 696,
+  "purchaseCount": 4,
+  "assignments": [
+    {"tierId": "deu-0009", "priceCents": 99, "quantity": 1},
+    {"tierId": "deu-0021", "priceCents": 199, "quantity": 3}
   ]
 }
 ```
 
-Valid input without an exact solution returns HTTP `409 Conflict`. Malformed or
-out-of-range input returns HTTP `422 Unprocessable Content`. `GET /health` is the
-container health endpoint.
+Valid input without an exact solution returns `409 Conflict`. Malformed or
+out-of-range input returns `422 Unprocessable Content` using a structured error
+body. Targets are limited to 100,000 cents and requests to 1,000 unique,
+positive price points. Prices above the target are valid and ignored.
+
+## Design
+
+- `cmd/papsolver` is the composition root, process lifecycle, and container
+  health-check command.
+- `internal/domain` owns validated monetary and problem types.
+- `internal/solver` contains the HTTP-independent dynamic-programming algorithm.
+- `internal/httpapi` performs strict JSON decoding and maps domain results and
+  errors to HTTP.
+- `api` embeds the OpenAPI contract served by the application.
+
+The solver first divides the target and usable prices by their greatest common
+divisor. It then uses `O(target × tiers)` time and `O(target)` memory, checks for
+request cancellation, and reconstructs the chosen price points from predecessor
+indices.
