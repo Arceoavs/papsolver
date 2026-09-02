@@ -41,7 +41,7 @@ cd solver
 go run ./cmd/papsolver
 ```
 
-The frontend requires [Bun](https://bun.sh/):
+The statically generated Nuxt frontend requires [Bun](https://bun.sh/):
 
 ```sh
 cd papsolvue
@@ -49,7 +49,7 @@ bun install --frozen-lockfile
 bun run dev
 ```
 
-Vite serves the frontend at <http://localhost:5173> and proxies `/api` to the
+Nuxt serves the frontend at <http://localhost:3000> and proxies `/api` to the
 backend at <http://localhost:8000>.
 
 ## Checks
@@ -67,8 +67,9 @@ bun run build
 
 ## Architecture
 
-- `papsolvue/`: Vue 3, TypeScript, Vue Router, Vite, and native `fetch`, managed
-  with Bun. A multi-stage container builds the SPA and serves it through Nginx.
+- `papsolvue/`: Nuxt 4, Vue 3, TypeScript, and native `fetch`, managed with Bun.
+  Nuxt prerenders every route into static HTML; the production image contains
+  only that output and Nginx.
 - `solver/`: dependency-free Go HTTP service with private monetary domain types,
   strict JSON decoding, bounded solver concurrency, and an exact integer-cent
   dynamic-programming algorithm. Valid problems without an exact solution
@@ -85,10 +86,10 @@ and [the frontend README](papsolvue/README.md) for component-specific details.
 The bundled German catalogue contains 800 current-style App Store price points
 instead of the retired numbered tier system. Its source, verification date,
 retrieval date, and limitations are recorded in
-[`papsolvue/src/data/de-prices.json`](papsolvue/src/data/de-prices.json).
+[`papsolvue/app/data/de-prices.json`](papsolvue/app/data/de-prices.json).
 
 Apple's canonical list is available only through authenticated App Store
 Connect in the context of an app or in-app purchase. The checked-in snapshot is
 therefore explicitly identified as a dated, third-party reproduction of an App
 Store Connect export. Replace it with your own official export using the
-instructions in [`papsolvue/src/data/README.md`](papsolvue/src/data/README.md).
+instructions in [`papsolvue/app/data/README.md`](papsolvue/app/data/README.md).

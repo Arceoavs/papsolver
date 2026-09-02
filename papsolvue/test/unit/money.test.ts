@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseMoneyToCents } from "./money";
+import { parseMoneyToCents } from "../../app/utils/money";
 
 describe("parseMoneyToCents", () => {
   it.each([

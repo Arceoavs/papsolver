@@ -19,7 +19,7 @@ from App Store Connect as JSON or CSV and run, for example:
 
 ```sh
 uv run python scripts/import_apple_prices.py export.json \
-  papsolvue/src/data/de-prices.json \
+  papsolvue/app/data/de-prices.json \
   --territory DEU --territory-alias DE --territory-alias Germany \
   --country Germany --country-code DE --currency EUR \
   --as-of 2026-09-02

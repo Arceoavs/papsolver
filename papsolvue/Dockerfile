@@ -1,4 +1,4 @@
-FROM oven/bun:1.3.13-alpine AS build
+FROM oven/bun:1.4.0-alpine AS build
 
 WORKDIR /app
 
@@ -8,12 +8,12 @@ RUN bun install --frozen-lockfile
 COPY . .
 RUN bun run build
 
-FROM nginx:1.29-alpine AS runtime
+FROM nginx:1.30.3-alpine AS runtime
 
 ENV API_UPSTREAM=http://backend:8000
 
 COPY nginx/default.conf.template /etc/nginx/templates/default.conf.template
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/.output/public /usr/share/nginx/html
 
 EXPOSE 80
 

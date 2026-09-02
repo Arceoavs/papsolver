@@ -1,5 +1,8 @@
 node_modules
 dist
+.nuxt
+.output
+coverage
 .git
 .DS_Store
 *.log

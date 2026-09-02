@@ -7,13 +7,13 @@
         This solver is not available yet. The current version supports German App
         Store price points through the iTunes balance solver.
       </p>
-      <RouterLink class="button button-primary" :to="{ name: 'itunes' }">
+      <NuxtLink class="button button-primary" to="/itunes">
         Open iTunes solver
-      </RouterLink>
+      </NuxtLink>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from "vue-router";
+useHead({ title: "Generic prepaid — PapSolver" });
 </script>

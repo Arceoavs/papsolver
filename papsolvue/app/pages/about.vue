@@ -27,3 +27,7 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+useHead({ title: "About — PapSolver" });
+</script>

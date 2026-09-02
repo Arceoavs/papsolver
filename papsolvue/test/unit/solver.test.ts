@@ -1,5 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { NoSolutionError, solveBalance, type SolveRequest } from "./solver";
+import {
+  NoSolutionError,
+  solveBalance,
+  type SolveRequest,
+} from "../../app/services/solver";
 
 const request: SolveRequest = {
   targetCents: 198,

@@ -32,3 +32,7 @@
     </p>
   </section>
 </template>
+
+<script setup lang="ts">
+useHead({ title: "Imprint — PapSolver" });
+</script>

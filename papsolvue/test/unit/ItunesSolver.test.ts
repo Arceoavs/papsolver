@@ -1,6 +1,6 @@
 import { flushPromises, mount } from "@vue/test-utils";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import Itunes from "./Itunes.vue";
+import ItunesSolver from "../../app/components/ItunesSolver.vue";
 
 afterEach(() => vi.restoreAllMocks());
 
@@ -27,7 +27,7 @@ describe("iTunes solver view", () => {
         { status: 200, headers: { "Content-Type": "application/json" } },
       ),
     );
-    const wrapper = mount(Itunes);
+    const wrapper = mount(ItunesSolver);
     await fillValidForm(wrapper);
 
     await wrapper.get("form").trigger("submit");
@@ -53,7 +53,7 @@ describe("iTunes solver view", () => {
         },
       ),
     );
-    const wrapper = mount(Itunes);
+    const wrapper = mount(ItunesSolver);
     await fillValidForm(wrapper);
 
     await wrapper.get("form").trigger("submit");
@@ -65,7 +65,7 @@ describe("iTunes solver view", () => {
 
   it("keeps invalid forms local instead of calling the API", async () => {
     const fetchMock = vi.spyOn(globalThis, "fetch");
-    const wrapper = mount(Itunes);
+    const wrapper = mount(ItunesSolver);
 
     await wrapper.get("form").trigger("submit");
 
