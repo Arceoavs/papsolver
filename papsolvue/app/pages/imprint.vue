@@ -1,38 +1,44 @@
 <template>
   <section class="content-page container narrow legal-copy">
-    <h1>Impressum</h1>
-    <h2>Diensteanbieter</h2>
-    <p>Arnold Arz von Straussenburg</p>
-    <p>Universitätsstraße 14-16<br />48143 Münster<br />Deutschland</p>
+    <p class="eyebrow">Legal</p>
+    <h1>Legal notice (Impressum)</h1>
 
-    <h2>Kontaktmöglichkeiten</h2>
+    <h2>Site operator</h2>
+    <address>
+      Arnold Arz von Straussenburg<br />
+      Universitätsstraße 14–16<br />
+      48143 Münster<br />
+      Germany
+    </address>
+
+    <h2>Contact</h2>
+    <p><a href="mailto:arnold@vgr.best">arnold@vgr.best</a></p>
+
+    <h2>About this service</h2>
     <p>
-      <strong>E-Mail-Adresse:</strong>
-      <a href="mailto:arnold@vgr.best">arnold@vgr.best</a>
+      CentMatch is a private, non-commercial, open-source project. It does not
+      sell products, accept payments, display advertising, or use affiliate
+      links. CentMatch is not affiliated with or endorsed by Apple or Galva.
+    </p>
+    <p>
+      Provider information is supplied under
+      <a
+        href="https://www.die-medienanstalten.de/fileadmin/user_upload/Rechtsgrundlagen/Gesetze_Staatsvertraege/Medienstaatsvertrag_MStV.pdf"
+        target="_blank"
+        rel="noreferrer"
+      >§ 18(1) Medienstaatsvertrag</a>
+      and, where applicable,
+      <a href="https://www.gesetze-im-internet.de/ddg/__5.html" target="_blank" rel="noreferrer">
+        § 5 Digitale-Dienste-Gesetz</a>.
     </p>
 
-    <h2>Haftungs- und Urheberrechtshinweise</h2>
     <p>
-      Die Inhalte dieses Onlineangebotes wurden sorgfältig und nach unserem
-      aktuellen Kenntnisstand erstellt, dienen jedoch nur der Information und
-      entfalten keine rechtlich bindende Wirkung, sofern es sich nicht um gesetzlich
-      verpflichtende Informationen handelt. Alle Angebote sind freibleibend und
-      unverbindlich.
-    </p>
-    <p>
-      Inhalte fremder Webseiten, auf die wir direkt oder indirekt verweisen, liegen
-      außerhalb unseres Verantwortungsbereiches. Für deren Inhalte haftet allein der
-      jeweilige Anbieter.
-    </p>
-
-    <h2>Bildnachweise</h2>
-    <p>
-      Icons from <a href="https://www.flaticon.com">Flaticon</a>. Rechtstext
-      erstellt mit dem Datenschutz-Generator von Dr. Thomas Schwenke.
+      Third-party sources and the public-domain image credit are listed on the
+      <NuxtLink to="/about#sources">sources page</NuxtLink>.
     </p>
   </section>
 </template>
 
 <script setup lang="ts">
-useHead({ title: "Imprint — PapSolver" });
+useHead({ title: "Legal notice — CentMatch" });
 </script>

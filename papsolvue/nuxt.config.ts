@@ -8,17 +8,18 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "en" },
-      title: "PapSolver",
+      title: "CentMatch",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           name: "description",
           content:
-            "Find an exact combination of purchases for a remaining prepaid balance.",
+            "Find the smallest combination of available prices that exactly matches a remaining balance.",
         },
+        { name: "theme-color", content: "#071216" },
       ],
-      link: [{ rel: "icon", href: "/favicon.ico" }],
+      link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
     },
   },
 
@@ -27,7 +28,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: true,
-      routes: ["/", "/itunes", "/general", "/about", "/imprint", "/privacy"],
+      routes: ["/", "/solve", "/about", "/imprint", "/privacy"],
     },
   },
 

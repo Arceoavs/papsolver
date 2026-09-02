@@ -4,8 +4,8 @@
       <p class="eyebrow">Exact balance solver</p>
       <h1>Use every last cent.</h1>
       <p>
-        Enter your remaining balance and choose the German App Store price points
-        you are willing to buy. We will find an exact combination when one exists.
+        Enter your remaining balance, then use the built-in App Store catalogue
+        or paste your own prices. We will find an exact combination when one exists.
       </p>
     </div>
 
@@ -36,13 +36,74 @@
           </p>
         </div>
 
-        <div class="field">
-          <label for="country">Store country</label>
-          <select id="country" v-model="country" name="country">
-            <option value="de">Germany</option>
-            <option value="gb" disabled>Great Britain — pricing unavailable</option>
-            <option value="us" disabled>United States — pricing unavailable</option>
-          </select>
+        <fieldset class="field source-picker">
+          <legend>Price source</legend>
+          <div class="source-options">
+            <label :class="{ selected: sourceMode === 'built-in' }">
+              <input v-model="sourceMode" type="radio" value="built-in" />
+              <span>
+                <strong>Germany App Store</strong>
+                <small>Use the bundled price-point catalogue</small>
+              </span>
+            </label>
+            <label :class="{ selected: sourceMode === 'custom' }">
+              <input v-model="sourceMode" type="radio" value="custom" />
+              <span>
+                <strong>My own prices</strong>
+                <small>Paste a private, temporary list</small>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div v-if="sourceMode === 'custom'" class="field custom-prices">
+          <label for="custom-prices">Custom price list</label>
+          <textarea
+            id="custom-prices"
+            v-model="customInput"
+            name="custom-prices"
+            rows="9"
+            spellcheck="false"
+            placeholder="0.99&#10;Coffee, 2.50&#10;Lunch — 7,25 €"
+            aria-describedby="custom-prices-help custom-prices-status"
+            :aria-invalid="customParse.errors.length > 0"
+          ></textarea>
+          <small id="custom-prices-help">
+            One entry per line. A label is optional; the price can use a dot or
+            comma. Labels may contain up to 120 characters.
+          </small>
+          <p class="privacy-note">
+            Parsing happens in this browser. When you submit, only the resulting
+            labels and prices are sent to the solver and they are not stored.
+          </p>
+
+          <div
+            v-if="customParse.errors.length"
+            id="custom-prices-status"
+            class="parse-summary message message-warning"
+            role="alert"
+          >
+            <strong>
+              {{ customParse.errors.length }}
+              {{ customParse.errors.length === 1 ? "line needs" : "lines need" }} attention.
+            </strong>
+            <ul>
+              <li v-for="error in visibleParseErrors" :key="`${error.line}-${error.input}`">
+                Line {{ error.line }}: {{ error.message }}
+              </li>
+            </ul>
+            <small v-if="customParse.errors.length > visibleParseErrors.length">
+              Plus {{ customParse.errors.length - visibleParseErrors.length }} more.
+            </small>
+          </div>
+          <p v-else id="custom-prices-status" class="parse-status" role="status">
+            <strong>{{ customParse.tiers.length }}</strong>
+            {{ customParse.tiers.length === 1 ? "unique price" : "unique prices" }} ready.
+            <span v-if="customParse.duplicateCount">
+              {{ customParse.duplicateCount }}
+              {{ customParse.duplicateCount === 1 ? "duplicate was" : "duplicates were" }} merged.
+            </span>
+          </p>
         </div>
 
         <fieldset class="field tier-picker">
@@ -51,13 +112,24 @@
             <input
               v-model="tierQuery"
               type="search"
-              placeholder="Filter price points"
+              placeholder="Filter by label or price"
               aria-label="Filter price points"
+              :disabled="availableTiers.length === 0"
             />
-            <button type="button" class="button button-secondary" @click="selectAll">
+            <button
+              type="button"
+              class="button button-secondary"
+              :disabled="availableTiers.length === 0"
+              @click="selectAll"
+            >
               Select all
             </button>
-            <button type="button" class="text-button" @click="selectedTierIds = []">
+            <button
+              type="button"
+              class="text-button"
+              :disabled="selectedTierIds.length === 0"
+              @click="selectedTierIds = []"
+            >
               Clear
             </button>
           </div>
@@ -69,22 +141,25 @@
             size="10"
             aria-describedby="tiers-help tiers-error"
             :aria-invalid="showTierError"
+            :disabled="availableTiers.length === 0"
             @blur="tiersTouched = true"
           >
             <option v-for="tier in filteredTiers" :key="tier.id" :value="tier.id">
-              {{ formatEuros(tier.priceCents) }}
+              {{ tierName(tier) ? `${tierName(tier)} — ` : "" }}{{ formatEuros(tier.priceCents) }}
             </option>
           </select>
           <small id="tiers-help">
             {{ selectedTierIds.length }} of {{ availableTiers.length }} selected.
             Hold Ctrl or Command to select individual values.
           </small>
-          <small>
+          <small v-if="sourceMode === 'built-in'">
             German price-point snapshot as of {{ pricingMetadata.asOf }}.
             <a :href="pricingMetadata.sourceUrl" target="_blank" rel="noreferrer">Source details</a>
           </small>
           <p v-if="showTierError" id="tiers-error" class="field-error" role="alert">
-            Choose at least one price point.
+            {{ sourceMode === "custom" && customParse.tiers.length === 0
+              ? "Add at least one valid custom price."
+              : "Choose at least one price point." }}
           </p>
         </fieldset>
 
@@ -127,7 +202,10 @@
           <ul class="purchase-list">
             <li v-for="item in purchases" :key="item.tierId">
               <span class="quantity">{{ item.quantity }}×</span>
-              <span>{{ formatEuros(item.priceCents) }}</span>
+              <span class="purchase-description">
+                <strong v-if="item.label">{{ item.label }}</strong>
+                <span>{{ formatEuros(item.priceCents) }}</span>
+              </span>
               <span class="line-total">{{ formatEuros(item.priceCents * item.quantity) }}</span>
             </li>
           </ul>
@@ -146,11 +224,11 @@ import {
   type Assignment,
   type Tier,
 } from "../services/solver";
+import { parseCustomPriceList } from "../utils/customPrices";
 import { formatEuros, parseMoneyToCents } from "../utils/money";
 
-interface PricePoint {
-  id: string;
-  priceCents: number;
+interface DisplayTier extends Tier {
+  description?: string;
 }
 
 interface PricingSnapshot {
@@ -158,16 +236,18 @@ interface PricingSnapshot {
     asOf: string;
     sourceUrl: string;
   };
-  prices: PricePoint[];
+  prices: DisplayTier[];
 }
 
+type SourceMode = "built-in" | "custom";
 type ViewState = "idle" | "loading" | "success" | "no-solution" | "error";
 
-const availableTiers = (pricing as PricingSnapshot).prices;
+const builtInTiers = (pricing as PricingSnapshot).prices;
 const pricingMetadata = (pricing as PricingSnapshot).metadata;
 const balance = ref("");
 const balanceTouched = ref(false);
-const country = ref("de");
+const sourceMode = ref<SourceMode>("built-in");
+const customInput = ref("");
 const selectedTierIds = ref<string[]>([]);
 const tiersTouched = ref(false);
 const tierQuery = ref("");
@@ -177,6 +257,11 @@ const assignment = ref<Assignment[]>([]);
 let activeRequest: AbortController | undefined;
 
 const targetCents = computed(() => parseMoneyToCents(balance.value));
+const customParse = computed(() => parseCustomPriceList(customInput.value));
+const visibleParseErrors = computed(() => customParse.value.errors.slice(0, 6));
+const availableTiers = computed(() =>
+  sourceMode.value === "built-in" ? builtInTiers : customParse.value.tiers,
+);
 const showBalanceError = computed(
   () => balanceTouched.value && targetCents.value === null,
 );
@@ -184,20 +269,36 @@ const showTierError = computed(
   () => tiersTouched.value && selectedTierIds.value.length === 0,
 );
 const filteredTiers = computed(() => {
-  const query = tierQuery.value.trim().replace(",", ".");
-  if (!query) return availableTiers;
-  return availableTiers.filter((tier) =>
-    (tier.priceCents / 100).toFixed(2).includes(query),
+  const query = tierQuery.value.trim().replace(",", ".").toLocaleLowerCase();
+  if (!query) return availableTiers.value;
+  return availableTiers.value.filter(
+    (tier) =>
+      (tier.priceCents / 100).toFixed(2).includes(query) ||
+      tier.label?.toLocaleLowerCase().includes(query) ||
+      tier.description?.toLocaleLowerCase().includes(query),
   );
 });
-const tiersById = new Map(availableTiers.map((tier) => [tier.id, tier]));
+const tiersById = computed(
+  () => new Map(availableTiers.value.map((tier) => [tier.id, tier])),
+);
 const purchases = computed(() =>
   assignment.value
-    .filter((item) => item.quantity > 0 && tiersById.has(item.tierId)),
+    .filter((item) => item.quantity > 0)
+    .map((item) => ({
+      ...item,
+      label:
+        item.label ??
+        tiersById.value.get(item.tierId)?.label ??
+        tiersById.value.get(item.tierId)?.description,
+    })),
 );
 
 function selectAll(): void {
-  selectedTierIds.value = availableTiers.map((tier) => tier.id);
+  selectedTierIds.value = availableTiers.value.map((tier) => tier.id);
+}
+
+function tierName(tier: DisplayTier): string | undefined {
+  return tier.label ?? tier.description;
 }
 
 function resetResult(): void {
@@ -208,12 +309,33 @@ function resetResult(): void {
   statusMessage.value = "";
 }
 
+watch(sourceMode, () => {
+  tierQuery.value = "";
+  selectedTierIds.value = sourceMode.value === "custom"
+    ? customParse.value.tiers.map((tier) => tier.id)
+    : [];
+  tiersTouched.value = false;
+  resetResult();
+});
+
+watch(customInput, () => {
+  if (sourceMode.value !== "custom") return;
+  selectedTierIds.value = customParse.value.tiers.map((tier) => tier.id);
+  resetResult();
+});
+
 watch([balance, selectedTierIds], resetResult, { deep: true });
 
 async function submit(): Promise<void> {
   balanceTouched.value = true;
   tiersTouched.value = true;
-  if (targetCents.value === null || selectedTierIds.value.length === 0) return;
+  if (
+    targetCents.value === null ||
+    selectedTierIds.value.length === 0 ||
+    (sourceMode.value === "custom" && customParse.value.errors.length > 0)
+  ) {
+    return;
+  }
 
   activeRequest?.abort();
   activeRequest = new AbortController();
@@ -222,8 +344,14 @@ async function submit(): Promise<void> {
   statusMessage.value = "";
 
   const tiers: Tier[] = selectedTierIds.value.flatMap((id) => {
-    const price = tiersById.get(id);
-    return price ? [{ id, priceCents: price.priceCents }] : [];
+    const tier = tiersById.value.get(id);
+    return tier
+      ? [{
+          id: tier.id,
+          priceCents: tier.priceCents,
+          ...(tier.label ? { label: tier.label } : {}),
+        }]
+      : [];
   });
 
   try {

@@ -1,6 +1,7 @@
 export interface Tier {
   id: string;
   priceCents: number;
+  label?: string;
 }
 
 export interface SolveRequest {
@@ -12,6 +13,7 @@ export interface Assignment {
   tierId: string;
   priceCents: number;
   quantity: number;
+  label?: string;
 }
 
 export interface SolveResponse {

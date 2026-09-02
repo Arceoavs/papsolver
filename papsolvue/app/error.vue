@@ -12,5 +12,5 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: "Page not found — PapSolver" });
+useHead({ title: "Page not found — CentMatch" });
 </script>

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: solver
-  namespace: papsolvue
+  namespace: centmatch
 spec:
   replicas: 1
   selector:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: solver
-          image: arceo99/solver:latest
+          image: arceo99/centmatch-api:latest
           imagePullPolicy: Always
           env:
             - name: SOLVER_MAX_CONCURRENT

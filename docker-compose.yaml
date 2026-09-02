@@ -1,4 +1,4 @@
-name: papsolver
+name: centmatch
 
 services:
   backend:
@@ -9,7 +9,7 @@ services:
     ports:
       - "${BACKEND_PORT:-8000}:8000"
     healthcheck:
-      test: ["CMD", "/papsolver", "healthcheck"]
+      test: ["CMD", "/centmatch-api", "healthcheck"]
       interval: 5s
       timeout: 3s
       retries: 10

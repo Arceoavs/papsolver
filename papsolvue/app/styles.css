@@ -39,9 +39,14 @@ body {
     #071216;
 }
 
+address {
+  font-style: normal;
+}
+
 button,
 input,
-select {
+select,
+textarea {
   font: inherit;
 }
 
@@ -57,7 +62,8 @@ a {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
-select:focus-visible {
+select:focus-visible,
+textarea:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
@@ -162,7 +168,7 @@ select:focus-visible {
   overflow: hidden;
   background:
     linear-gradient(90deg, #071216 12%, rgb(7 18 22 / 92%) 50%, rgb(7 18 22 / 30%)),
-    url("./assets/landing.jpg") center / cover;
+    url("./assets/coins-public-domain.jpg") center right / cover;
 }
 
 .hero::after {
@@ -250,7 +256,7 @@ h3 {
 }
 
 .button:disabled {
-  cursor: wait;
+  cursor: not-allowed;
   opacity: 0.68;
 }
 
@@ -297,12 +303,80 @@ h3 {
   color: var(--accent);
 }
 
+.landing-section {
+  padding: clamp(4rem, 9vw, 7rem) 0;
+}
+
+.section-heading {
+  max-width: 720px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  letter-spacing: -0.04em;
+}
+
+.section-heading > p:last-child {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.feature-card {
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.feature-number {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.feature-card h3 {
+  margin: 2.5rem 0 0.7rem;
+  font-size: 1.35rem;
+}
+
+.feature-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.privacy-callout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr auto;
+  gap: 1rem;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  color: var(--muted);
+}
+
+.privacy-callout p {
+  margin: 0;
+}
+
+.privacy-callout strong {
+  color: var(--ink);
+}
+
 .solver-page {
   min-height: calc(100vh - 68px);
   padding: clamp(3rem, 7vw, 6rem) 0 6rem;
   background:
     linear-gradient(90deg, #071216 20%, rgb(7 18 22 / 85%)),
-    url("./assets/ios.jpg") top right / min(62vw, 900px) auto no-repeat;
+    url("./assets/coins-public-domain.jpg") top right / min(62vw, 900px) auto no-repeat;
 }
 
 .page-heading {
@@ -358,7 +432,8 @@ h3 {
 }
 
 .field input,
-.field select {
+.field select,
+.field textarea {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 7px;
@@ -368,8 +443,22 @@ h3 {
 }
 
 .field input:hover,
-.field select:hover {
+.field select:hover,
+.field textarea:hover {
   border-color: #4d6a72;
+}
+
+.field input:disabled,
+.field select:disabled,
+.field button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.field textarea {
+  min-height: 12rem;
+  resize: vertical;
+  line-height: 1.55;
 }
 
 .money-input {
@@ -392,6 +481,89 @@ h3 {
   margin: 0;
   color: var(--danger);
   font-size: 0.88rem;
+}
+
+.source-picker {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+.source-picker legend {
+  margin-bottom: 0.5rem;
+}
+
+.source-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.source-options label {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.85rem;
+  background: #09191d;
+  cursor: pointer;
+}
+
+.source-options label:hover,
+.source-options label.selected {
+  border-color: var(--cyan);
+  background: rgb(109 231 237 / 7%);
+}
+
+.source-options input {
+  width: auto;
+  border: 0;
+  margin: 0.22rem 0 0;
+  padding: 0;
+  background: transparent;
+  accent-color: var(--accent);
+}
+
+.source-options span {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.source-options small {
+  font-weight: 400;
+}
+
+.privacy-note,
+.parse-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.privacy-note::before {
+  margin-right: 0.4rem;
+  color: var(--success);
+  content: "●";
+}
+
+.parse-summary {
+  margin-top: 0;
+}
+
+.parse-summary ul {
+  margin: 0.65rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.parse-summary li + li {
+  margin-top: 0.35rem;
+}
+
+.parse-status strong {
+  color: var(--ink);
 }
 
 .tier-picker {
@@ -530,6 +702,20 @@ h3 {
   font-variant-numeric: tabular-nums;
 }
 
+.purchase-description {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.purchase-description strong {
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+
+.purchase-description span {
+  color: var(--muted);
+}
+
 .quantity {
   color: var(--accent);
   font-weight: 800;
@@ -568,6 +754,36 @@ h3 {
   margin-top: 0;
 }
 
+.prose code {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.08em 0.3em;
+  color: var(--ink);
+  background: #09191d;
+}
+
+.equation {
+  overflow-x: auto;
+  border-left: 3px solid var(--accent);
+  margin: 1.4rem 0;
+  padding: 1rem 1.25rem;
+  color: var(--ink);
+  background: rgb(220 255 85 / 5%);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  white-space: nowrap;
+}
+
+.sources-section {
+  border-top: 1px solid var(--line);
+  margin-top: 2.5rem;
+  padding-top: 0.4rem;
+}
+
+.sources-section li + li {
+  margin-top: 0.65rem;
+}
+
 .legal-copy h1 {
   color: var(--ink);
   font-size: clamp(2.4rem, 6vw, 4rem);
@@ -588,7 +804,7 @@ h3 {
   align-items: center;
   background:
     linear-gradient(90deg, #071216, rgb(7 18 22 / 64%)),
-    url("./assets/404.jpg") center / cover;
+    url("./assets/coins-public-domain.jpg") center / cover;
 }
 
 .not-found p:not(.eyebrow) {
@@ -598,6 +814,14 @@ h3 {
 }
 
 @media (max-width: 760px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-callout {
+    grid-template-columns: 1fr;
+  }
+
   .solver-grid {
     grid-template-columns: 1fr;
   }
@@ -617,6 +841,10 @@ h3 {
 }
 
 @media (max-width: 540px) {
+  .source-options {
+    grid-template-columns: 1fr;
+  }
+
   .nav {
     min-height: 62px;
   }
@@ -636,7 +864,7 @@ h3 {
   .hero {
     background:
       linear-gradient(90deg, rgb(7 18 22 / 96%), rgb(7 18 22 / 74%)),
-      url("./assets/landing.jpg") center / cover;
+      url("./assets/coins-public-domain.jpg") center / cover;
   }
 
   .balance-sequence {

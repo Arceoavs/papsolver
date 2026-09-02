@@ -7,7 +7,7 @@ import {
 
 const request: SolveRequest = {
   targetCents: 198,
-  tiers: [{ id: "tier-99", priceCents: 99 }],
+  tiers: [{ id: "tier-99", priceCents: 99, label: "Small app" }],
 };
 
 afterEach(() => vi.restoreAllMocks());
@@ -20,7 +20,12 @@ describe("solveBalance", () => {
           targetCents: 198,
           purchaseCount: 2,
           assignments: [
-            { tierId: "tier-99", priceCents: 99, quantity: 2 },
+            {
+              tierId: "tier-99",
+              priceCents: 99,
+              quantity: 2,
+              label: "Small app",
+            },
           ],
         }),
         { status: 200, headers: { "Content-Type": "application/json" } },
@@ -30,7 +35,14 @@ describe("solveBalance", () => {
     await expect(solveBalance(request)).resolves.toEqual({
       targetCents: 198,
       purchaseCount: 2,
-      assignments: [{ tierId: "tier-99", priceCents: 99, quantity: 2 }],
+      assignments: [
+        {
+          tierId: "tier-99",
+          priceCents: 99,
+          quantity: 2,
+          label: "Small app",
+        },
+      ],
     });
     expect(fetchMock).toHaveBeenCalledWith(
       "/api/solve",

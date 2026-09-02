@@ -18,7 +18,7 @@ reach the solver.
 Go 1.27 or newer is required:
 
 ```sh
-go run ./cmd/papsolver
+go run ./cmd/centmatch
 ```
 
 The server listens on `http://localhost:8000`. Set `PORT` to change the port and
@@ -75,7 +75,7 @@ tier IDs and prices do.
 
 ## Design
 
-- `cmd/papsolver` is the composition root, process lifecycle, and container
+- `cmd/centmatch` is the composition root, process lifecycle, and container
   health-check command.
 - `internal/domain` owns validated monetary and problem types.
 - `internal/solver` contains the HTTP-independent dynamic-programming algorithm.

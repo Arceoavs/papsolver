@@ -1,8 +1,8 @@
-# Kubernetes namespace "papsolvue"
+# Kubernetes namespace "centmatch"
 
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: papsolvue
+  name: centmatch
   labels:
-    app: papsolvue
+    app: centmatch

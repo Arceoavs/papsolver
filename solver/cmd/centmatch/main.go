@@ -18,7 +18,7 @@ import (
 
 func main() {
 	if err := run(); err != nil {
-		slog.Error("papsolver stopped", "error", err)
+		slog.Error("centmatch stopped", "error", err)
 		os.Exit(1)
 	}
 }
@@ -48,7 +48,7 @@ func run() error {
 	defer stop()
 	errCh := make(chan error, 1)
 	go func() {
-		slog.Info("papsolver listening", "address", server.Addr, "maxConcurrent", maxConcurrent)
+		slog.Info("centmatch listening", "address", server.Addr, "maxConcurrent", maxConcurrent)
 		errCh <- server.ListenAndServe()
 	}()
 

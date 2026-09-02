@@ -1,7 +1,7 @@
-# PapSolver frontend
+# CentMatch frontend
 
-Nuxt 4 and TypeScript frontend for PapSolver. Nuxt prerenders every application
-route as static HTML, while the iTunes page hydrates in the browser for solver
+Nuxt 4 and TypeScript frontend for CentMatch. Nuxt prerenders every application
+route as static HTML, while the solver page hydrates in the browser for
 interactions. Bun manages packages and runs all JavaScript tooling.
 
 ## Local development
@@ -41,6 +41,7 @@ package. All other direct dependencies are at their current releases.
 - `app/components`: navigation and other shared Vue components
 - `app/services`: typed browser API client using native `fetch`
 - `app/data`: the versioned German App Store price-point snapshot
+- `app/utils/customPrices.ts`: local parser for user-provided price lists
 - `nuxt.config.ts`: document metadata, static generation, and development proxy
 
 ## Container
@@ -51,10 +52,10 @@ serves known prerendered routes, returns the generated Nuxt `404.html` for
 unknown routes, and proxies `/api/*` to the Go backend.
 
 ```sh
-docker build -t papsolver-frontend .
+docker build -t centmatch .
 docker run --rm -p 8080:80 \
   -e API_UPSTREAM=http://host.docker.internal:8000 \
-  papsolver-frontend
+  centmatch
 ```
 
 When using the repository's Compose configuration, the upstream is configured

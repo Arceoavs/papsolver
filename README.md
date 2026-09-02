@@ -1,10 +1,10 @@
-# PapSolver
+# CentMatch
 
-PapSolver finds a combination of repeated prices that spends a prepaid balance
+CentMatch finds a combination of repeated prices that spends a prepaid balance
 exactly. Among multiple exact solutions, it returns one with the fewest
 purchases.
 
-The project contains a Vue 3 browser application and a stateless Go service.
+The project contains a static Nuxt browser application and a stateless Go service.
 Prices and balances cross the API as integer cents, so monetary values are never
 solved with floating-point arithmetic.
 
@@ -38,7 +38,7 @@ The backend requires Go 1.27 or newer:
 
 ```sh
 cd solver
-go run ./cmd/papsolver
+go run ./cmd/centmatch
 ```
 
 The statically generated Nuxt frontend requires [Bun](https://bun.sh/):
@@ -78,6 +78,10 @@ bun run build
 - `scripts/import_apple_prices.py`: offline normalizer for an authenticated App
   Store Connect JSON or CSV price export.
 
+The solver page can use either the bundled Germany catalogue or a pasted custom
+price list. Custom lists are parsed in the browser; only the validated prices
+and optional labels are sent with the solve request and nothing is persisted.
+
 The backend has no database or session state. See [the API README](solver/README.md)
 and [the frontend README](papsolvue/README.md) for component-specific details.
 
@@ -93,3 +97,7 @@ Connect in the context of an app or in-app purchase. The checked-in snapshot is
 therefore explicitly identified as a dated, third-party reproduction of an App
 Store Connect export. Replace it with your own official export using the
 instructions in [`papsolvue/app/data/README.md`](papsolvue/app/data/README.md).
+
+The production Kubernetes ingress serves the application at
+<https://centmatch.arz.st>. The Go API is kept private and reached through the
+frontend's same-origin `/api` proxy.

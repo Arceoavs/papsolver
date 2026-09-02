@@ -1,7 +1,7 @@
 <template>
-  <ItunesSolver />
+  <BalanceSolver />
 </template>
 
 <script setup lang="ts">
-useHead({ title: "iTunes balance — PapSolver" });
+useHead({ title: "Balance solver — CentMatch" });
 </script>

@@ -10,14 +10,14 @@ COPY internal ./internal
 RUN CGO_ENABLED=0 GOOS=linux go build \
     -trimpath \
     -ldflags="-s -w" \
-    -o /out/papsolver \
-    ./cmd/papsolver
+    -o /out/centmatch-api \
+    ./cmd/centmatch
 
 FROM scratch
 
-COPY --from=build /out/papsolver /papsolver
+COPY --from=build /out/centmatch-api /centmatch-api
 
 USER 65532:65532
 EXPOSE 8000
 
-ENTRYPOINT ["/papsolver"]
+ENTRYPOINT ["/centmatch-api"]

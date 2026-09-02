@@ -1,5 +1,5 @@
 {
-  "name": "papsolver-frontend",
+  "name": "centmatch-frontend",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -21,7 +21,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "6.0.8",
     "@vue/test-utils": "2.5.0",
-    "happy-dom": "20.13.1",
+    "happy-dom": "20.13.2",
     "typescript": "6.0.3",
     "vite": "8.2.2",
     "vitest": "4.1.11",

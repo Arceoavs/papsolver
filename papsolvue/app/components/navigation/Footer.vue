@@ -3,7 +3,8 @@
     <div class="container footer-content">
       <nav aria-label="Footer navigation">
         <a href="https://github.com/Arceoavs/papsolver">GitHub</a>
-        <a href="mailto:info@vgr.best">Mail</a>
+        <a href="mailto:arnold@vgr.best">Mail</a>
+        <NuxtLink to="/about#sources">Sources</NuxtLink>
         <NuxtLink to="/imprint">Imprint</NuxtLink>
         <NuxtLink to="/privacy">Privacy</NuxtLink>
       </nav>
