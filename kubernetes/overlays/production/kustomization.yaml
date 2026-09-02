@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+  - namespace.yaml
+  - ingress.yaml
+
+namespace: centmatch
+
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/instance: centmatch-production
+
+images:
+  - name: centmatch-frontend
+    newName: arceo99/centmatch
+    newTag: latest
+  - name: centmatch-api
+    newName: arceo99/centmatch-api
+    newTag: latest

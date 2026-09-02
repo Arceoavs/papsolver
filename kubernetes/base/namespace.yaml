@@ -1,8 +1,0 @@
-# Kubernetes namespace "centmatch"
-
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: centmatch
-  labels:
-    app: centmatch

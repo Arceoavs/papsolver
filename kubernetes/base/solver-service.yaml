@@ -1,14 +1,15 @@
-# Kubernetes service with the name solver-service in namespace centmatch on port 80
-
 apiVersion: v1
 kind: Service
 metadata:
   name: solver-service
-  namespace: centmatch
+  labels:
+    app.kubernetes.io/name: centmatch
+    app.kubernetes.io/component: solver
+    app.kubernetes.io/part-of: centmatch
 spec:
   ports:
-    - port: 80
-      targetPort: 8000
+    - name: http
+      port: 80
+      targetPort: http
   selector:
     app: solver
-status: {}

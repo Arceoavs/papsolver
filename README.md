@@ -74,7 +74,8 @@ bun run build
   strict JSON decoding, bounded solver concurrency, and an exact integer-cent
   dynamic-programming algorithm. Valid problems without an exact solution
   return `409 Conflict`.
-- `kubernetes/`: Kustomize resources for the same two containers.
+- `kubernetes/`: a reusable Kustomize base, production overlay, and declarative
+  Argo CD application for the same two containers.
 - `scripts/import_apple_prices.py`: offline normalizer for an authenticated App
   Store Connect JSON or CSV price export.
 
@@ -98,6 +99,8 @@ therefore explicitly identified as a dated, third-party reproduction of an App
 Store Connect export. Replace it with your own official export using the
 instructions in [`papsolvue/app/data/README.md`](papsolvue/app/data/README.md).
 
-The production Kubernetes ingress serves the application at
-<https://centmatch.arz.st>. The Go API is kept private and reached through the
-frontend's same-origin `/api` proxy.
+The production Kustomize overlay serves the application at
+<https://centmatch.arz.st>. The Go API stays private and is reached through the
+frontend's same-origin `/api` proxy. See
+[`kubernetes/README.md`](kubernetes/README.md) for rendering and Argo CD bootstrap
+instructions.
