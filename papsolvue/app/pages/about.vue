@@ -132,7 +132,7 @@
 
         <h3>Image credit</h3>
         <p>
-          The mixed-coins photograph used on the solver and error pages was created by Kili and
+          The mixed-coins photograph used on the error page was created by Kili and
           <a href="https://commons.wikimedia.org/wiki/File:Coins.jpg" target="_blank" rel="noreferrer">
             released into the public domain via Wikimedia Commons
           </a>.

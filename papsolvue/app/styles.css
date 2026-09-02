@@ -314,7 +314,7 @@ h3 {
   padding: clamp(3rem, 7vw, 6rem) 0 6rem;
   background:
     linear-gradient(90deg, #071216 20%, rgb(7 18 22 / 85%)),
-    url("./assets/coins-public-domain.jpg") top right / min(62vw, 900px) auto no-repeat;
+    url("./assets/hero-dark.webp") top right / min(62vw, 900px) auto no-repeat;
 }
 
 .page-heading {
