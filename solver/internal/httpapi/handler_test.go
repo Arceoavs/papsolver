@@ -31,7 +31,7 @@ func TestMetadataEndpoints(t *testing.T) {
 		contentType string
 		body        string
 	}{
-		{path: "/", contentType: "application/json", body: `"version":"3.0.0"`},
+		{path: "/", contentType: "application/json", body: `"title":"CentMatch"`},
 		{path: "/health", contentType: "application/json", body: `"status":"ok"`},
 		{path: "/openapi.yaml", contentType: "application/yaml", body: "openapi: 3.1.0"},
 	}
@@ -39,6 +39,27 @@ func TestMetadataEndpoints(t *testing.T) {
 		response := request(t, handler, http.MethodGet, test.path, "")
 		if response.Code != http.StatusOK || !strings.Contains(response.Header().Get("Content-Type"), test.contentType) || !strings.Contains(response.Body.String(), test.body) {
 			t.Fatalf("GET %s = status %d, content-type %q, body %q", test.path, response.Code, response.Header().Get("Content-Type"), response.Body.String())
+		}
+	}
+}
+
+func TestServiceInfoUsesCurrentAPIVersion(t *testing.T) {
+	t.Parallel()
+
+	response := request(t, httpapi.New(1), http.MethodGet, "/", "")
+	if !strings.Contains(response.Body.String(), `"version":"3.1.0"`) {
+		t.Fatalf("service info body = %s, want API version 3.1.0", response.Body.String())
+	}
+}
+
+func TestOpenAPIDocumentsBrandAndLabels(t *testing.T) {
+	t.Parallel()
+
+	response := request(t, httpapi.New(1), http.MethodGet, "/openapi.yaml", "")
+	body := response.Body.String()
+	for _, expected := range []string{"title: CentMatch API", "version: 3.1.0", "label:", "maxLength: 120", "legacyPricePoints:"} {
+		if !strings.Contains(body, expected) {
+			t.Errorf("OpenAPI document does not contain %q", expected)
 		}
 	}
 }
@@ -66,6 +87,36 @@ func TestSolve(t *testing.T) {
 	}
 	if got.TargetCents != 12 || got.PurchaseCount != 3 || len(got.Assignments) != 1 || got.Assignments[0].TierID != "four" || got.Assignments[0].Quantity != 3 {
 		t.Fatalf("response = %#v", got)
+	}
+	if strings.Contains(response.Body.String(), `"label"`) {
+		t.Fatalf("legacy response unexpectedly contains label: %s", response.Body.String())
+	}
+}
+
+func TestSolvePreservesTrimmedLabel(t *testing.T) {
+	t.Parallel()
+
+	response := request(t, httpapi.New(1), http.MethodPost, "/solve", `{
+		"targetCents": 8,
+		"tiers": [
+			{"id": "coffee", "label": "  Coffee refill  ", "priceCents": 4},
+			{"id": "unused", "label": "Unused", "priceCents": 3}
+		]
+	}`)
+	if response.Code != http.StatusOK {
+		t.Fatalf("POST /solve status = %d, body = %s", response.Code, response.Body.String())
+	}
+	var got struct {
+		Assignments []struct {
+			TierID string  `json:"tierId"`
+			Label  *string `json:"label"`
+		} `json:"assignments"`
+	}
+	if err := json.NewDecoder(response.Body).Decode(&got); err != nil {
+		t.Fatal(err)
+	}
+	if len(got.Assignments) != 1 || got.Assignments[0].TierID != "coffee" || got.Assignments[0].Label == nil || *got.Assignments[0].Label != "Coffee refill" {
+		t.Fatalf("assignments = %#v, want trimmed Coffee refill label", got.Assignments)
 	}
 }
 
@@ -95,6 +146,11 @@ func TestSolveRejectsMalformedRequests(t *testing.T) {
 		{name: "null", body: `null`, contentType: "application/json", status: http.StatusUnprocessableEntity},
 		{name: "decimal target", body: `{"targetCents": 8.5, "tiers": [{"id": "four", "priceCents": 4}]}`, contentType: "application/json", status: http.StatusUnprocessableEntity},
 		{name: "unknown field", body: `{"targetCents": 8, "tiers": [{"id": "four", "priceCents": 4}], "other": true}`, contentType: "application/json", status: http.StatusUnprocessableEntity},
+		{name: "unknown tier field", body: `{"targetCents": 8, "tiers": [{"id": "four", "priceCents": 4, "description": "Four"}]}`, contentType: "application/json", status: http.StatusUnprocessableEntity},
+		{name: "null label", body: `{"targetCents": 8, "tiers": [{"id": "four", "label": null, "priceCents": 4}]}`, contentType: "application/json", status: http.StatusUnprocessableEntity},
+		{name: "numeric label", body: `{"targetCents": 8, "tiers": [{"id": "four", "label": 4, "priceCents": 4}]}`, contentType: "application/json", status: http.StatusUnprocessableEntity},
+		{name: "control in label", body: `{"targetCents": 8, "tiers": [{"id": "four", "label": "line one\nline two", "priceCents": 4}]}`, contentType: "application/json", status: http.StatusUnprocessableEntity},
+		{name: "long label", body: `{"targetCents": 8, "tiers": [{"id": "four", "label": "` + strings.Repeat("界", 121) + `", "priceCents": 4}]}`, contentType: "application/json", status: http.StatusUnprocessableEntity},
 		{name: "duplicate prices", body: `{"targetCents": 8, "tiers": [{"id": "one", "priceCents": 4}, {"id": "two", "priceCents": 4}]}`, contentType: "application/json", status: http.StatusUnprocessableEntity},
 		{name: "multiple values", body: `{} {}`, contentType: "application/json", status: http.StatusUnprocessableEntity},
 	}
@@ -108,6 +164,38 @@ func TestSolveRejectsMalformedRequests(t *testing.T) {
 				t.Fatalf("status = %d, want %d; body = %s", response.Code, test.status, response.Body.String())
 			}
 		})
+	}
+}
+
+func TestSolveOmitsBlankLabel(t *testing.T) {
+	t.Parallel()
+
+	response := request(t, httpapi.New(1), http.MethodPost, "/solve", `{
+		"targetCents": 8,
+		"tiers": [{"id": "four", "label": "   ", "priceCents": 4}]
+	}`)
+	if response.Code != http.StatusOK {
+		t.Fatalf("POST /solve status = %d, body = %s", response.Code, response.Body.String())
+	}
+	if strings.Contains(response.Body.String(), `"label"`) {
+		t.Fatalf("response unexpectedly contains blank label: %s", response.Body.String())
+	}
+}
+
+func TestSolveRejectsInvalidUTF8Label(t *testing.T) {
+	t.Parallel()
+
+	body := append(
+		[]byte(`{"targetCents":8,"tiers":[{"id":"four","label":"`),
+		0xff,
+	)
+	body = append(body, []byte(`","priceCents":4}]}`)...)
+	value := httptest.NewRequest(http.MethodPost, "/solve", bytes.NewReader(body))
+	value.Header.Set("Content-Type", "application/json")
+	response := httptest.NewRecorder()
+	httpapi.New(1).ServeHTTP(response, value)
+	if response.Code != http.StatusUnprocessableEntity {
+		t.Fatalf("status = %d, want 422; body = %s", response.Code, response.Body.String())
 	}
 }
 

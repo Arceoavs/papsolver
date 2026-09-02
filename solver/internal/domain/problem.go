@@ -6,20 +6,22 @@ import (
 	"fmt"
 	"slices"
 	"strings"
+	"unicode"
 	"unicode/utf8"
 )
 
 const (
-	MaxTargetCents  = int64(100_000)
-	MaxPriceCents   = int64(1_000_000)
-	MaxTiers        = 1_000
-	MaxTierIDLength = 100
+	MaxTargetCents     = int64(100_000)
+	MaxPriceCents      = int64(1_000_000)
+	MaxTiers           = 1_000
+	MaxTierIDLength    = 100
+	MaxTierLabelLength = 120
 )
 
 // ErrInvalidProblem identifies input that violates a domain constraint.
 var ErrInvalidProblem = errors.New("invalid problem")
 
-// Cents is a positive monetary amount represented in minor EUR units.
+// Cents is a positive monetary amount represented in minor currency units.
 // Its representation is private so values can only be created by validation.
 type Cents struct {
 	minor int64
@@ -30,18 +32,24 @@ func (c Cents) MinorUnits() int64 {
 	return c.minor
 }
 
-// Tier is a validated App Store price point.
+// Tier is a validated price point.
 type Tier struct {
-	id    string
-	price Cents
+	id       string
+	label    string
+	hasLabel bool
+	price    Cents
 }
 
 func (t Tier) ID() string   { return t.id }
 func (t Tier) Price() Cents { return t.price }
 
+// Label returns the optional, human-readable tier label.
+func (t Tier) Label() (string, bool) { return t.label, t.hasLabel }
+
 // TierSpec is the primitive representation accepted at the domain boundary.
 type TierSpec struct {
 	ID         string
+	Label      *string
 	PriceCents int64
 }
 
@@ -80,6 +88,26 @@ func NewProblem(targetCents int64, specs []TierSpec) (Problem, error) {
 		if _, exists := seenIDs[id]; exists {
 			return Problem{}, invalid("tier IDs must be unique: %q", id)
 		}
+
+		var label string
+		var hasLabel bool
+		if spec.Label != nil {
+			if !utf8.ValidString(*spec.Label) {
+				return Problem{}, invalid("tiers[%d].label must contain valid UTF-8", index)
+			}
+			label = strings.TrimSpace(*spec.Label)
+			if label != "" {
+				hasLabel = true
+			}
+			if utf8.RuneCountInString(label) > MaxTierLabelLength {
+				return Problem{}, invalid("tiers[%d].label must not exceed %d characters", index, MaxTierLabelLength)
+			}
+			for _, character := range label {
+				if unicode.IsControl(character) {
+					return Problem{}, invalid("tiers[%d].label must not contain control characters", index)
+				}
+			}
+		}
 		if spec.PriceCents <= 0 {
 			return Problem{}, invalid("tiers[%d].priceCents must be positive", index)
 		}
@@ -92,7 +120,12 @@ func NewProblem(targetCents int64, specs []TierSpec) (Problem, error) {
 
 		seenIDs[id] = struct{}{}
 		seenPrices[spec.PriceCents] = struct{}{}
-		tiers = append(tiers, Tier{id: id, price: Cents{minor: spec.PriceCents}})
+		tiers = append(tiers, Tier{
+			id:       id,
+			label:    label,
+			hasLabel: hasLabel,
+			price:    Cents{minor: spec.PriceCents},
+		})
 	}
 
 	return Problem{target: Cents{minor: targetCents}, tiers: tiers}, nil

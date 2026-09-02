@@ -2,11 +2,13 @@
 package httpapi
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"io"
 	"mime"
 	"net/http"
+	"unicode/utf8"
 
 	"github.com/arceoavs/papsolver/solver/api"
 	"github.com/arceoavs/papsolver/solver/internal/domain"
@@ -14,13 +16,35 @@ import (
 )
 
 const (
-	Version        = "3.0.0"
+	Version        = "3.1.0"
 	maxRequestBody = 1 << 20
 )
 
 type tierRequest struct {
-	ID         string `json:"id"`
-	PriceCents int64  `json:"priceCents"`
+	ID         string         `json:"id"`
+	Label      optionalString `json:"label"`
+	PriceCents int64          `json:"priceCents"`
+}
+
+// optionalString distinguishes an omitted value from an explicit JSON null.
+// Labels are optional, but when supplied their JSON type must be a string.
+type optionalString struct {
+	value string
+	set   bool
+}
+
+func (value *optionalString) UnmarshalJSON(data []byte) error {
+	if bytes.Equal(data, []byte("null")) {
+		return errors.New("label must be a string when provided")
+	}
+	if !utf8.Valid(data) {
+		return errors.New("label must contain valid UTF-8")
+	}
+	if err := json.Unmarshal(data, &value.value); err != nil {
+		return err
+	}
+	value.set = true
+	return nil
 }
 
 type solveRequest struct {
@@ -29,9 +53,10 @@ type solveRequest struct {
 }
 
 type assignmentResponse struct {
-	TierID     string `json:"tierId"`
-	PriceCents int64  `json:"priceCents"`
-	Quantity   int    `json:"quantity"`
+	TierID     string  `json:"tierId"`
+	Label      *string `json:"label,omitempty"`
+	PriceCents int64   `json:"priceCents"`
+	Quantity   int     `json:"quantity"`
 }
 
 type solveResponse struct {
@@ -70,9 +95,9 @@ func New(maxConcurrent int) http.Handler {
 
 func (h *handler) serviceInfo(w http.ResponseWriter, _ *http.Request) {
 	writeJSON(w, http.StatusOK, map[string]string{
-		"title":       "PapSolver",
+		"title":       "CentMatch",
 		"version":     Version,
-		"description": "Exact integer-cent solver minimizing the number of purchases.",
+		"description": "Match a balance exactly using the fewest purchases.",
 	})
 }
 
@@ -105,7 +130,11 @@ func (h *handler) solve(w http.ResponseWriter, r *http.Request) {
 
 	specs := make([]domain.TierSpec, len(request.Tiers))
 	for index, tier := range request.Tiers {
-		specs[index] = domain.TierSpec{ID: tier.ID, PriceCents: tier.PriceCents}
+		var label *string
+		if tier.Label.set {
+			label = &tier.Label.value
+		}
+		specs[index] = domain.TierSpec{ID: tier.ID, Label: label, PriceCents: tier.PriceCents}
 	}
 	problem, err := domain.NewProblem(request.TargetCents, specs)
 	if err != nil {
@@ -137,6 +166,7 @@ func (h *handler) solve(w http.ResponseWriter, r *http.Request) {
 	for index, assignment := range result.Assignments {
 		assignments[index] = assignmentResponse{
 			TierID:     assignment.TierID,
+			Label:      assignment.Label,
 			PriceCents: assignment.PriceCents,
 			Quantity:   assignment.Quantity,
 		}

@@ -37,11 +37,58 @@ func TestSolveMinimizesPurchases(t *testing.T) {
 	}
 }
 
+func TestSolvePreservesOptionalLabelsOnAssignments(t *testing.T) {
+	t.Parallel()
+
+	label := "Coffee"
+	result, err := solver.Solve(context.Background(), problem(t, 8,
+		domain.TierSpec{ID: "labeled", Label: &label, PriceCents: 4},
+		domain.TierSpec{ID: "legacy", PriceCents: 3},
+	))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(result.Assignments) != 1 {
+		t.Fatalf("assignments = %#v, want one", result.Assignments)
+	}
+	assignment := result.Assignments[0]
+	if assignment.Label == nil || *assignment.Label != "Coffee" {
+		t.Fatalf("assignment label = %v, want Coffee", assignment.Label)
+	}
+
+	legacy, err := solver.Solve(context.Background(), problem(t, 9,
+		domain.TierSpec{ID: "legacy", PriceCents: 3},
+	))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if legacy.Assignments[0].Label != nil {
+		t.Fatalf("legacy assignment label = %q, want nil", *legacy.Assignments[0].Label)
+	}
+}
+
 func TestSolveUsesRequestOrderAsTieBreaker(t *testing.T) {
 	t.Parallel()
 
 	result, err := solver.Solve(context.Background(), problem(t, 6,
 		domain.TierSpec{ID: "four", PriceCents: 4},
+		domain.TierSpec{ID: "three", PriceCents: 3},
+		domain.TierSpec{ID: "two", PriceCents: 2},
+	))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(result.Assignments) != 2 || result.Assignments[0].TierID != "four" || result.Assignments[1].TierID != "two" {
+		t.Fatalf("assignments = %#v, want four then two", result.Assignments)
+	}
+}
+
+func TestSolveLabelDoesNotAffectTieBreaking(t *testing.T) {
+	t.Parallel()
+
+	label := "First choice"
+	result, err := solver.Solve(context.Background(), problem(t, 6,
+		domain.TierSpec{ID: "four", Label: &label, PriceCents: 4},
 		domain.TierSpec{ID: "three", PriceCents: 3},
 		domain.TierSpec{ID: "two", PriceCents: 2},
 	))

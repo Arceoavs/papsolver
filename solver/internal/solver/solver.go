@@ -13,6 +13,7 @@ var ErrNoExactSolution = errors.New("no exact solution")
 
 type Assignment struct {
 	TierID     string
+	Label      *string
 	PriceCents int64
 	Quantity   int
 }
@@ -25,6 +26,7 @@ type Result struct {
 
 type activeTier struct {
 	id              string
+	label           *string
 	priceCents      int64
 	normalizedPrice int
 }
@@ -45,8 +47,12 @@ func Solve(ctx context.Context, problem domain.Problem) (Result, error) {
 		if price > targetCents {
 			continue
 		}
+		var label *string
+		if value, ok := tier.Label(); ok {
+			label = &value
+		}
 		divisor = greatestCommonDivisor(divisor, price)
-		active = append(active, activeTier{id: tier.ID(), priceCents: price})
+		active = append(active, activeTier{id: tier.ID(), label: label, priceCents: price})
 	}
 	if len(active) == 0 || targetCents%divisor != 0 {
 		return Result{}, ErrNoExactSolution
@@ -107,6 +113,7 @@ func Solve(ctx context.Context, problem domain.Problem) (Result, error) {
 		}
 		assignments = append(assignments, Assignment{
 			TierID:     active[index].id,
+			Label:      active[index].label,
 			PriceCents: active[index].priceCents,
 			Quantity:   quantity,
 		})
