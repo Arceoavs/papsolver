@@ -1,62 +1,61 @@
-# NOT USING CHALICE ANYMORE
+# PapSolver API
 
-# PapsolvPi
+FastAPI backend for finding a set of repeated price tiers that adds up to a
+prepaid balance exactly. If several exact combinations exist, the solver returns
+one using the fewest purchases. Request tier order is the deterministic tie-breaker.
 
-Python backend for the Papa-Problem-Solver.
-Leverages the chalice framework to deploy serverless lambda functions on AWS.
+The solver uses integer cents throughout and dynamic programming. Targets are
+limited to 100,000 cents and requests to 1,000 unique, positive price tiers so API
+work and memory stay bounded. Individual tier prices may be as high as 1,000,000
+cents; tiers above the target are safely ignored by the solver and returned with a
+zero assignment.
 
-## Prerequisites
+## Local development
 
-`Python 3.7.3` was used for development of this project. Other versions of python may work but are not tested by me.
+Python 3.14 and [uv](https://docs.astral.sh/uv/) are required.
 
-Make sure to have your AWS credentials set up in the
-
-```
-~/.aws/credentials
-```
-
-file. Also, having the chalice and/or AWS CLI(s) installed globally probably is a good idea
-
-## Project setup
-
-### Virtualenv
-
-Clone this repository and initialize your virtualenv in the `chalice-solver` directory (e.g. `chalice-solver/.venv`)
-
-```
-python3 -m venv .venv
+```sh
+uv sync --locked
+uv run uvicorn app.main:app --reload
 ```
 
-and activate is using `source .venv/bin/activate`
+The API is available at <http://localhost:8000>, with interactive documentation
+at <http://localhost:8000/docs>.
 
-### pip dependencies
+## Test and lint
 
-Next, install the required dependencies
-
-```
-pip install -r requirements.txt
-```
-
-This should install all necessary dependencies, including `chalice` and Google `ortools`. Depending on your specific setup, the C dependencies of ortools may need to be dealt with.
-
-### Compiles and hot-reloads for development
-
-```
-chalice local
+```sh
+uv run pytest
+uv run ruff check .
+uv run ruff format --check .
 ```
 
-### Deploy to production
+## API
 
-To push the code to AWS:
+`POST /solve` preserves the original request shape:
 
+```json
+{
+  "target": 685,
+  "tiers": [
+    {"desc": "tier0", "price": {"int": 99, "full": 0.99}},
+    {"desc": "tier1", "price": {"int": 199, "full": 1.99}}
+  ]
+}
 ```
-chalice deploy
+
+A successful response includes all submitted tiers, including zero assignments:
+
+```json
+{
+  "max_object_value": 685,
+  "assignment": [
+    {"tier": "tier0", "value": 1},
+    {"tier": "tier1", "value": 3}
+  ]
+}
 ```
 
-### Linting
-
-For linting, `black` is used. You might want to configure your editor (VS Code in my case) accordingly.
-
-## Testing
-
-`pytest` testing not yet implemented.
+Valid input without an exact solution returns HTTP `409 Conflict`. Malformed or
+out-of-range input returns HTTP `422 Unprocessable Content`. `GET /health` is the
+container health endpoint.
