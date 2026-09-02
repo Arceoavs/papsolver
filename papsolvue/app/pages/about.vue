@@ -132,10 +132,14 @@
 
         <h3>Image credit</h3>
         <p>
-          The mixed-coins photograph used across the site was created by Kili and
+          The mixed-coins photograph used on the solver and error pages was created by Kili and
           <a href="https://commons.wikimedia.org/wiki/File:Coins.jpg" target="_blank" rel="noreferrer">
             released into the public domain via Wikimedia Commons
           </a>.
+        </p>
+        <p>
+          The dark token artwork on the landing page was generated specifically
+          for CentMatch using OpenAI's image generation tool.
         </p>
       </section>
     </article>

@@ -7,10 +7,10 @@
     <h2>Controller</h2>
     <address>
       Arnold Arz von Straussenburg<br />
-      Universitätsstraße 14–16<br />
-      48143 Münster<br />
-      Germany<br />
-      <a href="mailto:arnold@vgr.best">arnold@vgr.best</a>
+      c/o Universität Koblenz<br />
+      Universitätsstraße 1<br />
+      56070 Koblenz<br />
+      Germany
     </address>
 
     <h2>What is processed</h2>
@@ -61,8 +61,8 @@
       Subject to the GDPR's requirements, you may request access, correction,
       deletion, restriction, portability, or object to processing. You may also
       complain to a competent data-protection authority, such as the
-      <a href="https://www.ldi.nrw.de/" target="_blank" rel="noreferrer">
-        State Commissioner for Data Protection and Freedom of Information North Rhine-Westphalia
+      <a href="https://www.datenschutz.rlp.de/" target="_blank" rel="noreferrer">
+        State Commissioner for Data Protection and Freedom of Information Rhineland-Palatinate
       </a>.
       Use the contact address above for a request or question. The
       <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noreferrer">

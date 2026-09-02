@@ -6,13 +6,11 @@
     <h2>Site operator</h2>
     <address>
       Arnold Arz von Straussenburg<br />
-      Universitätsstraße 14–16<br />
-      48143 Münster<br />
+      c/o Universität Koblenz<br />
+      Universitätsstraße 1<br />
+      56070 Koblenz<br />
       Germany
     </address>
-
-    <h2>Contact</h2>
-    <p><a href="mailto:arnold@vgr.best">arnold@vgr.best</a></p>
 
     <h2>About this service</h2>
     <p>

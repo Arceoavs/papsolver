@@ -117,6 +117,15 @@
               :disabled="availableTiers.length === 0"
             />
             <button
+              v-if="sourceMode === 'built-in'"
+              type="button"
+              class="button button-secondary"
+              :disabled="commonTiers.length === 0"
+              @click="selectCommon"
+            >
+              Select common
+            </button>
+            <button
               type="button"
               class="button button-secondary"
               :disabled="availableTiers.length === 0"
@@ -133,24 +142,44 @@
               Clear
             </button>
           </div>
-          <select
+          <div
             id="tiers"
-            v-model="selectedTierIds"
-            name="tiers"
-            multiple
-            size="10"
+            class="tier-list"
+            role="group"
+            aria-label="Available price points"
             aria-describedby="tiers-help tiers-error"
             :aria-invalid="showTierError"
-            :disabled="availableTiers.length === 0"
-            @blur="tiersTouched = true"
           >
-            <option v-for="tier in filteredTiers" :key="tier.id" :value="tier.id">
-              {{ tierName(tier) ? `${tierName(tier)} — ` : "" }}{{ formatEuros(tier.priceCents) }}
-            </option>
-          </select>
+            <label
+              v-for="tier in filteredTiers"
+              :key="tier.id"
+              class="tier-option"
+              :class="{
+                selected: selectedTierSet.has(tier.id),
+                common: Boolean(tier.description),
+              }"
+            >
+              <input
+                v-model="selectedTierIds"
+                type="checkbox"
+                name="tiers"
+                :value="tier.id"
+                @blur="tiersTouched = true"
+              />
+              <span class="tier-option-copy">
+                <strong :class="{ muted: !tierName(tier) }">
+                  {{ tierName(tier) ?? "Price point" }}
+                </strong>
+                <small v-if="tier.description" class="common-badge">Common</small>
+              </span>
+              <strong class="tier-price">{{ formatEuros(tier.priceCents) }}</strong>
+            </label>
+            <p v-if="filteredTiers.length === 0" class="tier-empty">
+              No price points match this filter.
+            </p>
+          </div>
           <small id="tiers-help">
             {{ selectedTierIds.length }} of {{ availableTiers.length }} selected.
-            Hold Ctrl or Command to select individual values.
           </small>
           <small v-if="sourceMode === 'built-in'">
             German price-point snapshot as of {{ pricingMetadata.asOf }}.
@@ -262,6 +291,10 @@ const visibleParseErrors = computed(() => customParse.value.errors.slice(0, 6));
 const availableTiers = computed(() =>
   sourceMode.value === "built-in" ? builtInTiers : customParse.value.tiers,
 );
+const commonTiers = computed(() =>
+  builtInTiers.filter((tier) => Boolean(tier.description)),
+);
+const selectedTierSet = computed(() => new Set(selectedTierIds.value));
 const showBalanceError = computed(
   () => balanceTouched.value && targetCents.value === null,
 );
@@ -295,6 +328,10 @@ const purchases = computed(() =>
 
 function selectAll(): void {
   selectedTierIds.value = availableTiers.value.map((tier) => tier.id);
+}
+
+function selectCommon(): void {
+  selectedTierIds.value = commonTiers.value.map((tier) => tier.id);
 }
 
 function tierName(tier: DisplayTier): string | undefined {

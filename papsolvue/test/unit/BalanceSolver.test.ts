@@ -80,6 +80,20 @@ describe("balance solver view", () => {
     expect(wrapper.text()).toContain("Choose at least one price point");
   });
 
+  it("selects and highlights the described common price points", async () => {
+    const wrapper = mount(BalanceSolver);
+    const selectCommon = wrapper
+      .findAll("button")
+      .find((button) => button.text() === "Select common");
+
+    if (!selectCommon) throw new Error("Select-common button not found");
+    await selectCommon.trigger("click");
+
+    expect(wrapper.findAll(".tier-option.selected")).toHaveLength(18);
+    expect(wrapper.findAll(".tier-option.selected.common")).toHaveLength(18);
+    expect(wrapper.text()).toContain("18 of 800 selected");
+  });
+
   it("parses a custom list locally, merges duplicates, and submits labels", async () => {
     const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
       new Response(
