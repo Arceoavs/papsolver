@@ -1,20 +1,95 @@
 # PapSolver
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a3ff36a5-a693-4b3d-886d-4c95be6e69cb/deploy-status)](https://app.netlify.com/sites/papsolver/deploys)
+PapSolver finds a combination of repeated prices that spends a prepaid balance
+exactly. Among multiple exact solutions, it returns one with the fewest
+purchases.
 
-The Papa-Problem-Solver: http://www.straussenburg.de
+The project contains a Vue 3 browser application and a stateless FastAPI
+service. Prices and balances cross the API as integer cents, so monetary values
+are never solved with floating-point arithmetic.
 
-## About
+## Run with Docker Compose
 
-Linear integer programming solver, to find an arbitrary combination of prices to match a set goal exactly. Used to bring my dads iTunes credit to 0.00€ (in order to make it possible to change countries).
+Docker with the Compose plugin is the only prerequisite:
 
-## Project structure
+```sh
+docker compose up --build
+```
 
-The project is divided up into a client (papsolvue) and server (chalice-solver) directory.
-The client is built upon the Vue.js framework while the backend leverages AWS lambda functions using the (Flask-like) Chalice python framework.
+Then open:
 
-For more details concerning the code, please have a look into the respective README files in the client/ server directories.
+- Frontend: <http://localhost:8080>
+- Backend API documentation: <http://localhost:8000/docs>
+- Backend health check: <http://localhost:8000/health>
 
-## Contributing
+Override the published ports when necessary:
 
-This was an programming exercise I created for myself to get going with serverless concepts and AWS. Feel free to clone and modify the project. For bug fixes and additional features you might create a pull request.
+```sh
+FRONTEND_PORT=3000 BACKEND_PORT=9000 docker compose up --build
+```
+
+The frontend calls `/api`. Its Nginx container proxies that path to the backend
+over the private Compose network, so no browser-side API URL or CORS setup is
+needed.
+
+## Development
+
+The backend requires Python 3.14 and
+[uv](https://docs.astral.sh/uv/):
+
+```sh
+cd solver
+uv sync --locked
+uv run uvicorn app.main:app --reload
+```
+
+The frontend requires [Bun](https://bun.sh/):
+
+```sh
+cd papsolvue
+bun install --frozen-lockfile
+bun run dev
+```
+
+Vite serves the frontend at <http://localhost:5173> and proxies `/api` to the
+backend at <http://localhost:8000>.
+
+## Checks
+
+```sh
+cd solver
+uv run pytest
+uv run ruff check .
+uv run ruff format --check .
+
+cd ../papsolvue
+bun run test
+bun run build
+```
+
+## Architecture
+
+- `papsolvue/`: Vue 3, TypeScript, Vue Router, Vite, and native `fetch`, managed
+  with Bun. A multi-stage container builds the SPA and serves it through Nginx.
+- `solver/`: FastAPI, Pydantic, and an exact integer-cent dynamic-programming
+  solver, managed with uv. Valid problems without an exact solution return
+  `409 Conflict`.
+- `kubernetes/`: Kustomize resources for the same two containers.
+- `scripts/import_apple_prices.py`: offline normalizer for an authenticated App
+  Store Connect JSON or CSV price export.
+
+The backend has no database or session state. See [the API README](solver/README.md)
+and [the frontend README](papsolvue/README.md) for component-specific details.
+
+## Pricing data
+
+The bundled German catalogue contains 800 current-style App Store price points
+instead of the retired numbered tier system. Its source, verification date,
+retrieval date, and limitations are recorded in
+[`papsolvue/src/data/de-prices.json`](papsolvue/src/data/de-prices.json).
+
+Apple's canonical list is available only through authenticated App Store
+Connect in the context of an app or in-app purchase. The checked-in snapshot is
+therefore explicitly identified as a dated, third-party reproduction of an App
+Store Connect export. Replace it with your own official export using the
+instructions in [`papsolvue/src/data/README.md`](papsolvue/src/data/README.md).

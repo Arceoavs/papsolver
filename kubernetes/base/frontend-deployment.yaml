@@ -19,5 +19,17 @@ spec:
           ports:
             - containerPort: 80
           env:
-            - name: VUE_API_URL
-              value: http://papsolvue-api-deployment.papsolvue.svc.cluster.local
+            - name: API_UPSTREAM
+              value: http://solver-service.papsolvue.svc.cluster.local
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10

@@ -1,8 +1,8 @@
 {
-  "python.pythonPath": "/Users/arnoarz/code/papsolvpy/server/.venv/bin/python3",
-  "python.linting.enabled": true,
-  "editor.tabSize": 4,
-  "eslint.workingDirectories": ["./papsolvue"],
-  "python.formatting.provider": "black",
-  "editor.rulers": [80]
+  "python.defaultInterpreterPath": "${workspaceFolder}/solver/.venv/bin/python",
+  "editor.rulers": [100],
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+  }
 }

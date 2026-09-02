@@ -18,6 +18,16 @@ spec:
           image: arceo99/solver:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
-      nodeSelector:
-        kubernetes.io/arch: amd64
+            - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
