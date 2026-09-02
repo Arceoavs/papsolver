@@ -16,13 +16,22 @@
     "canonicalSource": "Apple App Store Connect API",
     "canonicalSourceUrl": "https://developer.apple.com/documentation/appstoreconnectapi",
     "caveat": "This is a third-party snapshot, not a live Apple response. Canonical current values require authenticated App Store Connect access and an app, subscription, or in-app purchase identifier.",
+    "summaryAnnotations": {
+      "sourceTable": "canonical summary",
+      "sourceColumn": "Common use",
+      "sourcePublisher": "Galva",
+      "sourceUrl": "https://galva.io/tools/apple-pricing-tiers/region/de",
+      "contentTreatment": "Project-maintained paraphrases of the source's highlighted descriptions",
+      "recordCount": 18
+    },
     "recordCount": 800,
     "generatedBy": "scripts/import_apple_prices.py"
   },
   "prices": [
     {
       "id": "deu-0000",
-      "priceCents": 29
+      "priceCents": 29,
+      "description": "Minimum price point for promotions and win-back offers"
     },
     {
       "id": "deu-0001",
@@ -30,7 +39,8 @@
     },
     {
       "id": "deu-0002",
-      "priceCents": 49
+      "priceCents": 49,
+      "description": "Entry-level pricing for introductory and promotional offers"
     },
     {
       "id": "deu-0003",
@@ -58,7 +68,8 @@
     },
     {
       "id": "deu-0009",
-      "priceCents": 99
+      "priceCents": 99,
+      "description": "Traditional Tier 1 choice for paid consumables in freemium apps"
     },
     {
       "id": "deu-0010",
@@ -82,7 +93,8 @@
     },
     {
       "id": "deu-0015",
-      "priceCents": 149
+      "priceCents": 149,
+      "description": "A sub-Tier 2 option for promotions or one-off feature access"
     },
     {
       "id": "deu-0016",
@@ -110,7 +122,8 @@
     },
     {
       "id": "deu-0022",
-      "priceCents": 199
+      "priceCents": 199,
+      "description": "Popular low-cost in-app purchase"
     },
     {
       "id": "deu-0023",
@@ -162,7 +175,8 @@
     },
     {
       "id": "deu-0035",
-      "priceCents": 299
+      "priceCents": 299,
+      "description": "Suited to an indie paid app or permanent unlock"
     },
     {
       "id": "deu-0036",
@@ -214,7 +228,8 @@
     },
     {
       "id": "deu-0048",
-      "priceCents": 399
+      "priceCents": 399,
+      "description": "Typical starting point for a monthly subscription"
     },
     {
       "id": "deu-0049",
@@ -266,7 +281,8 @@
     },
     {
       "id": "deu-0061",
-      "priceCents": 499
+      "priceCents": 499,
+      "description": "Widely used monthly subscription price"
     },
     {
       "id": "deu-0062",
@@ -526,7 +542,8 @@
     },
     {
       "id": "deu-0126",
-      "priceCents": 999
+      "priceCents": 999,
+      "description": "Monthly subscription level for professional plans"
     },
     {
       "id": "deu-0127",
@@ -586,7 +603,8 @@
     },
     {
       "id": "deu-0141",
-      "priceCents": 1299
+      "priceCents": 1299,
+      "description": "Higher-end monthly subscription price"
     },
     {
       "id": "deu-0142",
@@ -726,7 +744,8 @@
     },
     {
       "id": "deu-0176",
-      "priceCents": 1999
+      "priceCents": 1999,
+      "description": "One-time price for an indie game or professional app"
     },
     {
       "id": "deu-0177",
@@ -926,7 +945,8 @@
     },
     {
       "id": "deu-0226",
-      "priceCents": 2999
+      "priceCents": 2999,
+      "description": "Typical starting point for an annual subscription"
     },
     {
       "id": "deu-0227",
@@ -1326,7 +1346,8 @@
     },
     {
       "id": "deu-0326",
-      "priceCents": 4999
+      "priceCents": 4999,
+      "description": "Widely used annual subscription price"
     },
     {
       "id": "deu-0327",
@@ -1446,7 +1467,8 @@
     },
     {
       "id": "deu-0356",
-      "priceCents": 5999
+      "priceCents": 5999,
+      "description": "Higher-end annual subscription price"
     },
     {
       "id": "deu-0357",
@@ -1686,7 +1708,8 @@
     },
     {
       "id": "deu-0416",
-      "priceCents": 7999
+      "priceCents": 7999,
+      "description": "Annual subscription level for professional plans"
     },
     {
       "id": "deu-0417",
@@ -1926,7 +1949,8 @@
     },
     {
       "id": "deu-0476",
-      "priceCents": 9999
+      "priceCents": 9999,
+      "description": "Upper end of traditional broadly marketed annual plans"
     },
     {
       "id": "deu-0477",
@@ -2378,7 +2402,8 @@
     },
     {
       "id": "deu-0589",
-      "priceCents": 19999
+      "priceCents": 19999,
+      "description": "Premium annual price for professional or enterprise offerings"
     },
     {
       "id": "deu-0590",
@@ -3214,7 +3239,8 @@
     },
     {
       "id": "deu-0798",
-      "priceCents": 109999
+      "priceCents": 109999,
+      "description": "Former maximum legacy tier before the 2023 pricing expansion"
     },
     {
       "id": "deu-0799",
